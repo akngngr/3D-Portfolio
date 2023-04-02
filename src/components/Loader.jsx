@@ -1,7 +1,9 @@
 import { Html, useProgress } from "@react-three/drei";
 
+// 3D mesh loading percentage and removes html from Canvas
 const CanvasLoader = () => {
   const { progress } = useProgress();
+
   return (
     <Html
       as='div'
