@@ -7,6 +7,7 @@ import CanvasLoader from "../Loader";
 const Computers = ({ isMobile }) => {
   // const computer = useGLTF("./desktop_pc/scene.gltf");
   const computer = useGLTF("./computer_desk/scene.gltf");
+  // const computer = useGLTF("./computer_model/scene.gltf");
 
   return (
     <mesh>
@@ -19,6 +20,7 @@ const Computers = ({ isMobile }) => {
         intensity={1}
         castShadow
         shadow-mapSize={1024}
+        onContextMenu={(event) => event.preventDefault()}
       />
       <primitive
         object={computer.scene}
@@ -28,6 +30,9 @@ const Computers = ({ isMobile }) => {
         scale={isMobile ? 0.02 : 0.04 }
         position={isMobile ? [-0.2, -2.25, 0] : [0, -3.25, 0]}
         rotation={[-0.01, 0.8, 0]}
+        // scale={isMobile ? 0.02 : 0.3 }
+        // position={isMobile ? [-0.2, -2.25, 0] : [0, -1, 0]}
+        // rotation={[-0.01, 0.8, 0]}
       />
     </mesh>
   );
