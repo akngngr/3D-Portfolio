@@ -25,6 +25,7 @@ gltfLoader.setDRACOLoader(dLoader);
 
 let mixer;
 const Computers = ({ isMobile }) => {
+  
   /* This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)*/
 
   const computer = useGLTF("./hacker_room/scene.glb");
