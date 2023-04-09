@@ -23,6 +23,10 @@ import {
     jobit,
     tripguide,
     threejs,
+    azure,
+    mui,
+    github,
+    vite
   } from "../assets";
   
   export const navLinks = [
@@ -81,8 +85,8 @@ import {
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
+      name: "vite",
+      icon: vite,
     },
     {
       name: "Tailwind CSS",
@@ -105,12 +109,20 @@ import {
       icon: git,
     },
     {
+      name: "github",
+      icon: github,
+    },
+    {
       name: "figma",
       icon: figma,
     },
     {
-      name: "docker",
-      icon: docker,
+      name: "mui",
+      icon: mui,
+    },
+    {
+      name: "azure",
+      icon: azure,
     },
   ];
   

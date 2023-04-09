@@ -1,13 +1,46 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import {
+  OrbitControls,
+  Preload,
+  Stars,
+  useGLTF,
+  useAnimations,
+} from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
+const gltfLoader = new GLTFLoader();
+
+// Using Draco for compressed glb file - improves 3D loading.
+const dLoader = new DRACOLoader();
+
+dLoader.setDecoderPath(
+  "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+);
+dLoader.setDecoderConfig({ type: "js" });
+gltfLoader.setDRACOLoader(dLoader);
+
+let mixer;
 const Computers = ({ isMobile }) => {
-  // const computer = useGLTF("./desktop_pc/scene.gltf");
-  const computer = useGLTF("./computer_desk/scene.gltf");
-  // const computer = useGLTF("./computer_model/scene.gltf");
+  /* This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)*/
+
+  const computer = useGLTF("./hacker_room/scene.glb");
+
+  if (computer.animations.length) {
+    mixer = new THREE.AnimationMixer(computer.scene);
+    computer.animations.forEach((clip) => {
+      const action = mixer.clipAction(clip);
+      action.play();
+    });
+  }
+
+  useFrame((state, delta) => {
+    mixer?.update(delta);
+  });
 
   return (
     <mesh>
@@ -20,19 +53,12 @@ const Computers = ({ isMobile }) => {
         intensity={1}
         castShadow
         shadow-mapSize={1024}
-        onContextMenu={(event) => event.preventDefault()}
       />
       <primitive
         object={computer.scene}
-        // scale={0.75}
-        // position={[0, -3.25, -1.5]}
-        // rotation={[-0.01, -0.2, -0.1]}
-        scale={isMobile ? 0.02 : 0.04 }
-        position={isMobile ? [-0.2, -2.25, 0] : [0, -3.25, 0]}
-        rotation={[-0.01, 0.8, 0]}
-        // scale={isMobile ? 0.02 : 0.3 }
-        // position={isMobile ? [-0.2, -2.25, 0] : [0, -1, 0]}
-        // rotation={[-0.01, 0.8, 0]}
+        scale={isMobile ? 0.02 : 0.03}
+        position={isMobile ? [-0.2, -2.25, 0] : [0, -2, 0]}
+        rotation={[0.5, 3.5, 0.2]}
       />
     </mesh>
   );
@@ -43,9 +69,8 @@ const ComputersCanvas = () => {
 
   // Changes isMobile variable
   useEffect(() => {
-
     // Add a listener for changes to the screen size
-    const mediaQuery = window.matchMedia('(max-width: 500px)');
+    const mediaQuery = window.matchMedia("(max-width: 500px)");
 
     // Set the initial value of the 'isMobile' state variable
     setIsMobile(mediaQuery.matches);
@@ -53,27 +78,27 @@ const ComputersCanvas = () => {
     // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
-    }
+    };
 
     // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener('change', handleMediaQueryChange)
-    
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
     // Remove the listener when the component is unmounted
     return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange)
-    }
-
-  }, [])
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
 
   return (
     <Canvas
-      frameloop="demand"
       shadows
       camera={{ position: [15, 3, 35], fov: `${isMobile ? 18 : 15}` }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
+        <Stars />
         <OrbitControls
+          onContextMenu={(event) => event.preventDefault()}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
