@@ -26,7 +26,7 @@ const Navbar = () => {
         >
           <img src={alogo} alt={alogo} className="w-12 h-12 object-contain" />
           <p className="text-white text-[18] font-bold cursor-pointer flex">
-            Akin &nbsp;
+            Akın &nbsp;
             <span className="sm:block hidden">| Gungor</span>
           </p>
         </Link>

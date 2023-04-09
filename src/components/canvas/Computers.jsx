@@ -4,7 +4,6 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {
   OrbitControls,
   Preload,
-  Stars,
   useGLTF,
   useAnimations,
 } from "@react-three/drei";
@@ -96,10 +95,11 @@ const ComputersCanvas = () => {
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <Stars />
         <OrbitControls
           onContextMenu={(event) => event.preventDefault()}
           enableZoom={false}
+          enablePan={false}
+          enableRotate={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
