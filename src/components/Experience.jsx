@@ -18,11 +18,11 @@ const ExperienceCard = ({ experience }) => (
     date={experience.date}
     iconStyle={{ background: experience.iconBG }}
     icon={
-      <div className="flex justify-center items-center w-full h-full">
+      <div className="flex justify-center items-center w-full h-full rounded-full bg-white">
         <img
           src={experience.icon}
           alt={experience.company_name}
-          className="w-[60%] h-[60%] object-contain"
+          className="w-[100%] h-[100%] object-contain rounded-full"
         />
       </div>
     }
@@ -37,6 +37,7 @@ const ExperienceCard = ({ experience }) => (
       </p>
     </div>
 
+    {/* WebGL canvas limit in browsers ~16. */}
     <ul className="mt-5 list-disc ml-5 space-y-2">
       {experience.points.map((point, index) => (
         <li

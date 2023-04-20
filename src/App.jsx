@@ -10,6 +10,8 @@ import {
   Works,
   StarsCanvas
 } from "./components";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+Parallax
 
 const App = () => {
   return (
@@ -24,11 +26,11 @@ const App = () => {
         <Experience />
         <Tech />
         <Works />
-        <Feedbacks />
+        {/* <Feedbacks /> */}
         <div className="relative z-0">
           <Contact />
         </div>
-          <StarsCanvas />
+        <StarsCanvas />
       </div>
     </BrowserRouter>
     </>

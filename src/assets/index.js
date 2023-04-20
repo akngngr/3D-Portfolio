@@ -2,11 +2,12 @@ import logo from "./logo.svg";
 import alogo from "./alogo.svg";
 import backend from "./backend.png";
 import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+import code from "./code.png";
+import atom from "./atom.png";
+import gamedev from "./gamedev.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -25,10 +26,8 @@ import azure from "./tech/azure.png";
 import mui from "./tech/mui.png";
 import vite from "./tech/vite.png";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+import freelance from "./company/freelance.png";
+import ak from "./company/ak.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -39,8 +38,6 @@ export {
   alogo,
   backend,
   creator,
-  mobile,
-  web,
   github,
   menu,
   close,
@@ -57,14 +54,15 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
   carrent,
   jobit,
   tripguide,
   azure,
   mui,
-  vite
+  vite,
+  freelance,
+  ak,
+  code,
+  atom,
+  gamedev
 };

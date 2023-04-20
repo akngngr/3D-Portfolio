@@ -6,11 +6,14 @@ import * as random from "maath/random/dist/maath-random.esm";
 const Stars = (props) => {
   const ref = useRef();
 
-  const [sphere] = useState(() =>random.inSphere(new Float32Array(5000), { radius: 1.2 }));
+  // Count has to be divisible by 3
+  const [sphere] = useState(() =>
+    random.inSphere(new Float32Array(3000), { radius: 1.2 })
+  );
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 50;
-    ref.current.rotation.y -= delta / 75;
+    ref.current.rotation.x -= delta / 10;
+    ref.current.rotation.y -= delta / 15;
   });
 
   return (
@@ -31,7 +34,10 @@ const Stars = (props) => {
 const StarsCanvas = () => {
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        gl={{ powerPreference: "high-performance" }}
+      >
         <Suspense fallback={null}>
           <Stars />
         </Suspense>

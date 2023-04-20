@@ -22,8 +22,10 @@ dLoader.setDecoderPath(
 );
 dLoader.setDecoderConfig({ type: "js" });
 gltfLoader.setDRACOLoader(dLoader);
+const renderer = new THREE.WebGLRenderer()
 
 let mixer;
+
 const Computers = ({ isMobile }) => {
   
   /* This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)*/
@@ -57,7 +59,7 @@ const Computers = ({ isMobile }) => {
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.02 : 0.03}
-        position={isMobile ? [-0.2, -2.25, 0] : [0, -2, 0]}
+        position={isMobile ? [0.2, -2.25, 0] : [0.2, -2, 0]}
         rotation={[0.5, 3.5, 0.2]}
       />
     </mesh>
@@ -89,11 +91,12 @@ const ComputersCanvas = () => {
     };
   }, []);
 
+
   return (
     <Canvas
       shadows
       camera={{ position: [15, 3, 35], fov: `${isMobile ? 18 : 15}` }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{ preserveDrawingBuffer: true, powerPreference: "high-performance" }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
