@@ -7,6 +7,7 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants/constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
+
 const ProjectCard = ({
   index,
   name,
@@ -15,6 +16,7 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
+
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
@@ -25,7 +27,7 @@ const ProjectCard = ({
         }}
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full my-5"
       >
-        <div className="relative w-full h-[230px]">
+        <div className="relative w-full h-[230px]"> 
           <img
             src={image}
             alt={name}

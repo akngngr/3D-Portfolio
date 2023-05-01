@@ -21,7 +21,7 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
+import three from "./tech/three.png";
 import azure from "./tech/azure.png";
 import mui from "./tech/mui.png";
 import vite from "./tech/vite.png";
@@ -32,6 +32,11 @@ import ak from "./company/ak.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import crypto from "./project/crypto.png";
+import dalle from "./project/dalle.png";
+import chatgpt from "./project/chatgpt.png";
+import booking from "./project/booking.png";
+import gym from "./project/gym.png";
 
 export {
   logo,
@@ -53,7 +58,6 @@ export {
   redux,
   tailwind,
   typescript,
-  threejs,
   carrent,
   jobit,
   tripguide,
@@ -64,5 +68,11 @@ export {
   ak,
   code,
   atom,
-  gamedev
+  gamedev,
+  crypto,
+  dalle,
+  chatgpt,
+  booking,
+  gym,
+  three
 };
