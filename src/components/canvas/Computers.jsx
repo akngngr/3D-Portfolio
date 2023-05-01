@@ -15,14 +15,14 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 const gltfLoader = new GLTFLoader();
 
 // Using Draco for compressed glb file - improves 3D loading.
-const dLoader = new DRACOLoader();
-dLoader.preload();
-dLoader.setDecoderPath(
-  "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
-);
-dLoader.setDecoderConfig({ type: "js" });
-gltfLoader.setDRACOLoader(dLoader);
-const renderer = new THREE.WebGLRenderer()
+// const dLoader = new DRACOLoader();
+// dLoader.preload();
+// dLoader.setDecoderPath(
+//   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+// );
+// dLoader.setDecoderConfig({ type: "js" });
+// gltfLoader.setDRACOLoader(dLoader);
+// const renderer = new THREE.WebGLRenderer()
 
 
 let mixer;

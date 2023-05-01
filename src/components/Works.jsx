@@ -43,7 +43,7 @@ const ProjectCard = ({
                 className="w-1/2 h1/2 object-contain"
               />
             </div>
-            {/* Live Project Link */}
+            Live Project Link
             {/* <div
               onClick={() => window.open(project_link, "_blank")}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
@@ -74,8 +74,8 @@ const Works = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>My work</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
+        <p className={`${styles.sectionSubText}`}>My work</p>
+        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
       <div className="w-full flex">
