@@ -55,7 +55,10 @@ const Navbar = () => {
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(link.title)}
             >
-              <a href={`#${link.id}`}>{link.title}</a>
+              <div className="flex gap-2">
+                {link.icon && <a href={link.url}><img src={link.icon} className="h-6"/></a>}
+                <a href={`#${link.id}`}>{link.title}</a>
+              </div>
             </li>
           ))}
         </ul>
@@ -72,7 +75,7 @@ const Navbar = () => {
               !toggle ? "hidden" : "flex"
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-2[140px] z-10 rounded-xl`}
           >
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
+            <ul className="list-none flex justify-end items-end flex-col gap-4">
               {navLinks.map((link) => (
                 <li
                   key={link.id}
@@ -84,7 +87,10 @@ const Navbar = () => {
                     setActive(link.title);
                   }}
                 >
+                  <div>
+                  {link.icon && <a href={link.url}><img src={link.icon} className="h-6"/></a>}
                   <a href={`#${link.id}`}>{link.title}</a>
+                  </div>
                 </li>
               ))}
             </ul>

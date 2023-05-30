@@ -9,9 +9,6 @@ import {
     nodejs,
     mongodb,
     git,
-    carrent,
-    jobit,
-    tripguide,
     three,
     azure,
     mui,
@@ -25,7 +22,10 @@ import {
     dalle,
     chatgpt,
     booking,
-    gym
+    gym,
+    pinterest,
+    github,
+    linkedin,
   } from "../assets";
   
   export const navLinks = [
@@ -40,6 +40,16 @@ import {
     {
       id: "contact",
       title: "Contact",
+    },
+    {
+      id: "linkedin",
+      icon: linkedin,
+      url: "https://www.linkedin.com/in/akin-gungor"
+    },
+    {
+      id: "GitHub",
+      icon: github,
+      url: "https://github.com/akngngr"
     },
   ];
   
@@ -56,10 +66,10 @@ import {
       title: "Backend Developer",
       icon: backend,
     },
-    {
-      title: "Game Dev Enthusiast",
-      icon: gamedev,
-    },
+    // {
+    //   title: "Game Dev Enthusiast",
+    //   icon: gamedev,
+    // },
   ];
   
   const technologies = [
@@ -281,27 +291,27 @@ import {
       image: crypto,
       source_code_link: "https://github.com/akngngr/crypto-api-project",
     },
-    // {
-    //   name: "Pinterest Clone",
-    //   description:
-    //     "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    //   tags: [
-    //     {
-    //       name: "nextjs",
-    //       color: "blue-text-gradient",
-    //     },
-    //     {
-    //       name: "supabase",
-    //       color: "green-text-gradient",
-    //     },
-    //     {
-    //       name: "css",
-    //       color: "pink-text-gradient",
-    //     },
-    //   ],
-    //   image: tripguide,
-    //   source_code_link: "https://github.com/",
-    // },
+    {
+      name: "Pinterest Clone",
+      description:
+        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+      tags: [
+        {
+          name: "react",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "MUI",
+          color: "skyblue-text-gradient",
+        },
+        {
+          name: "axios",
+          color: "green-text-gradient",
+        },
+      ],
+      image: pinterest,
+      source_code_link: "https://github.com/",
+    },
     // {
     //   name: "Weather App",
     //   description:
@@ -321,7 +331,7 @@ import {
     //     },
     //   ],
     //   image: tripguide,
-    //   source_code_link: "https://github.com/",
+    //   source_code_link: "https://github.com/akngngr/live-weather",
     // },
   ];
   

@@ -11,6 +11,7 @@ import {
 import CanvasLoader from "../Loader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { scroll } from "framer-motion";
 
 const gltfLoader = new GLTFLoader();
 
@@ -98,6 +99,7 @@ const ComputersCanvas = () => {
       shadows
       camera={{ position: [15, 3, 35], fov: `${isMobile ? 18 : 15}` }}
       gl={{ preserveDrawingBuffer: true, powerPreference: "high-performance" }}
+      className="z-[-1]"
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
