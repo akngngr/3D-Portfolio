@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import Caret from "./Caret";
 
 const Contact = () => {
   const formRef = useRef();
@@ -81,7 +82,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium focus:scale-105 ease-out duration-300"
             />
           </label>
           <label className="flex flex-col">
@@ -92,7 +93,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium focus:scale-105 ease-out duration-300"
             />
           </label>
           <label className="flex flex-col">
@@ -103,12 +104,12 @@ const Contact = () => {
               value={form.message}
               onChange={handleChange}
               placeholder="What do you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium focus:scale-105 ease-out duration-300"
             />
           </label>
           <button
             type="submit"
-            className="bg-tertiary py-3 px-8 my-4 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl"
+            className="bg-tertiary py-3 px-8 my-4 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:scale-105 ease-out duration-300 focus:scale-110"
           >
             {loading ? "Sending..." : "Send"}
           </button>
@@ -121,6 +122,8 @@ const Contact = () => {
       >
         <EarthCanvas />
       </motion.div>
+      <Caret />
+
     </div>
   );
 };

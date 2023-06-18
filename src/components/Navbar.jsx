@@ -52,7 +52,7 @@ const Navbar = () => {
               key={link.id}
               className={`${
                 active === link.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
+              } hover:text-white text-[18px] font-medium cursor-pointer hover:scale-125 ease-out duration-300`}
               onClick={() => setActive(link.title)}
             >
               <div className="flex gap-2">

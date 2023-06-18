@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import Desk from "./canvas/Scene";
 
 const Hero = () => {
   return (
@@ -27,6 +28,7 @@ const Hero = () => {
       </div>
 
       <ComputersCanvas />
+      {/* <Desk /> */}
 
       {/* Scrolling helper button */}
       <div className="absolute xs:bottom-25 bottom-8 w-full flex justify-center items-center">

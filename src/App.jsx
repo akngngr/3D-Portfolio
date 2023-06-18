@@ -8,7 +8,7 @@ import {
   Navbar,
   Tech,
   Works,
-  StarsCanvas
+  StarsCanvas,
 } from "./components";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 Parallax

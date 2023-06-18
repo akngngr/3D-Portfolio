@@ -135,12 +135,13 @@ import {
       iconBg: "#383E56",
       date: "April 2022 - Present",
       points: [
-        "Troubleshot advanced development issues in Akumina software, Microsoft Azure and SharePoint",
-        "Installed and upgraded software in Azure Cloud hosting.",
-        "Configured development environments.",
-        "Collaborated with project managers, stakeholders, end-users and software developers world-wide on a daily basis to ensure business operation.",
-        "Mentored junior engineers and worked closely with Software Developers and Engineers to review and resolve code bugs.",
-        "Technologies: JavaScript, React, APIs, HTML, CSS, NodeJS, Git, PowerShell, Azure App Service, Blob Storage, Application Insights, Virtual Networks and Virtual Machines.",
+        "Provide software and developer support for enterprise clients world-wide, install, configure and upgrade Production and Development environments.",
+        "Formulate responses to tickets, communicate progress and resolution efficiently in collaboration with End Users, Stakeholders, Developers, Project Managers and Customer Success teams.",
+        "Provide training of the software and create documentations for internal and public use.",
+        "Communicate across development teams to specifically articulate software bugs, observations, actions and resolutions throughout the technical problem-solving process.",
+        "Articulate limitations of the software features to clients, while being resourceful in finding ways to meet project requirements by utilizing the full extent of the software capabilities.",
+        "Analyze error logs and performance graphs to troubleshoot software bugs and conduct Root Cause Analysis.",
+        "Technologies: HTML5, CSS3, JavaScript, React, Git, Azure"
       ],
     },
     {
@@ -150,10 +151,11 @@ import {
       iconBg: "#E6DEDD",
       date: "Jan 2018 - Present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Develop and maintain web applications using ReactJS, UI libraries and other related development technologies.",
+        "Translate web designs into stable and maintainable React components.",
+        "Collaborate with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+        "Implement responsive design and ensure cross-browser compatibility.",
+        "Participate in code reviews and provide constructive feedback to other developers.",
       ],
     },
   ];
