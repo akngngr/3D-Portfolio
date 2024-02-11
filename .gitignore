@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 textures-bak
+scene-bak
 
 # Editor directories and files
 .vscode/*
