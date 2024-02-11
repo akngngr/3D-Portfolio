@@ -25,7 +25,7 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full mt-10"
+        className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full mt-3"
       >
         <div className="relative w-full h-[230px]"> 
           <img
@@ -78,7 +78,7 @@ const Works = () => {
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
+      
 
       <div className="w-full flex">
         <motion.p
@@ -93,11 +93,12 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mx-5 my-5 flex flex-wrap justify-center">
+      <div className="my-5 flex flex-wrap justify-center gap-5">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
+      </motion.div>
     </>
   );
 };
