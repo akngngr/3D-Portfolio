@@ -18,7 +18,8 @@ const ProjectCard = ({
 }) => {
 
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    // <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <div>
       <Tilt
         options={{
           max: 45,
@@ -68,7 +69,8 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
-    </motion.div>
+    {/* </motion.div> */}
+    </div>
   );
 };
 
@@ -93,7 +95,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="my-5 flex flex-wrap justify-center gap-7">
+      <div className="mx-5 my-5 flex flex-wrap justify-center">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
