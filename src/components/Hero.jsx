@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* <ComputersCanvas /> */}
       {/* <Desk /> */}
 
       {/* Scrolling helper button */}
