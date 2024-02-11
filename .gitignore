@@ -12,6 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
+textures-bak
 
 # Editor directories and files
 .vscode/*
