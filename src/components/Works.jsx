@@ -16,11 +16,11 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   return (
-    <Tilt>
-      <motion.div
-        variants={fadeIn("up", "spring", 0.5 * index, 0.75)}
-        className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3"
-      >
+    <Tilt className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3">
+      {/* <motion.div
+        variants={fadeIn("up", "spring", 0.5 * index, 0.75)} 
+      > */}
+      <div>
         <div
           options={{
             max: 45,
@@ -69,7 +69,8 @@ const ProjectCard = ({
             ))}
           </div>
         </div>
-      </motion.div>
+        </div>
+      {/* </motion.div> */}
     </Tilt>
   );
 };
