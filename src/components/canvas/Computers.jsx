@@ -30,7 +30,14 @@ let mixer;
 
 const Computers = ({ isMobile }) => {
   
-  /* This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)*/
+  // Model Information:
+  // * title:	By-Gen Web
+  // * source:	https://sketchfab.com/3d-models/by-gen-web-ec93b478a31e4bfc8204fee751d08e91
+  // * author:	slinkous1 (https://sketchfab.com/slinkous1)
+  
+  // Model License:
+  // * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+  // * requirements:	Author must be credited. Commercial use is allowed.
 
   const computer = useGLTF("./hacker_room/scene.glb");
 
@@ -107,7 +114,7 @@ const ComputersCanvas = () => {
         <OrbitControls
           onContextMenu={(event) => event.preventDefault()}
           enableZoom={true}
-          enablePan={true}
+          enablePan={false}
           enableRotate={true}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
