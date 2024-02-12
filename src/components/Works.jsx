@@ -7,7 +7,6 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants/constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
-
 const ProjectCard = ({
   index,
   name,
@@ -16,19 +15,17 @@ const ProjectCard = ({
   image,
   source_code_link,
 }) => {
-
   return (
-    <>
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3"
-      >
-        <div className="relative w-full h-[230px]"> 
+    <Tilt
+      options={{
+        max: 45,
+        scale: 1,
+        speed: 450,
+      }}
+      className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3"
+    >
+      <motion.div variants={fadeIn("up", "spring", 0.5 * index, 0.75)}>
+        <div className="relative w-full h-[230px]">
           <img
             src={image}
             alt={name}
@@ -44,7 +41,7 @@ const ProjectCard = ({
                 src={github}
                 alt="github"
                 className="w-1/2 h1/2 object-contain"
-              /> 
+              />
             </div>
             {/* Live Project Link */}
             {/* <div
@@ -68,9 +65,8 @@ const ProjectCard = ({
             </p>
           ))}
         </div>
-      </Tilt>
-    </motion.div>
-    </>
+      </motion.div>
+    </Tilt>
   );
 };
 
@@ -83,9 +79,7 @@ const Works = () => {
       </motion.div>
 
       <motion.div className="w-full flex">
-        <motion.p
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
+        <motion.p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
           links to code repositories and live demos in it. It reflects my
