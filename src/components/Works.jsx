@@ -1,3 +1,4 @@
+import React from "react";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
@@ -16,11 +17,15 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   return (
-    <Tilt className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3">
-      <motion.div
-        variants={fadeIn("up", "spring", 0.5 * index, 0.75)} 
+    <motion.div variants={fadeIn("up", "spring", 0.5 * index, 0.75)}>
+      <Tilt
+        options={{
+          max: 45,
+          scale: 1,
+          speed: 450,
+        }}
+        className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3"
       >
-      {/* <div> */}
         <div
           options={{
             max: 45,
@@ -43,7 +48,7 @@ const ProjectCard = ({
                 <img
                   src={github}
                   alt="github"
-                  className="w-1/2 h1/2 object-contain"
+                  className="w-1/2 h-1/2 object-contain"
                 />
               </div>
               {/* Live Project Link */}
@@ -51,7 +56,7 @@ const ProjectCard = ({
               onClick={() => window.open(project_link, "_blank")}
               className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
-              <img src="" alt="live" className="w-1/2 h1/2 object-contain" />
+              <img src="" alt="live" className="w-1/2 h-1/2 object-contain" />
             </div> */}
             </div>
           </div>
@@ -63,15 +68,14 @@ const ProjectCard = ({
 
           <div className="mt-4 flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <p key={tag.name} className={`text-[14px] ${tag.color}`}>
+              <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
                 #{tag.name}
               </p>
             ))}
           </div>
         </div>
-        {/* </div> */}
-      </motion.div>
-    </Tilt>
+      </Tilt>
+    </motion.div>
   );
 };
 
@@ -81,8 +85,9 @@ const Works = () => {
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      
+      </motion.div>
 
+      <div className='w-full flex'>
       <motion.p
         variants={fadeIn("up", "spring", 0.1, 1)}
         className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
@@ -93,13 +98,13 @@ const Works = () => {
         complex problems, work with different technologies, and manage projects
         effectively.
       </motion.p>
+      </div>
 
       <div className="my-5 flex flex-wrap justify-center gap-5">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
-      </motion.div>
     </>
   );
 };
