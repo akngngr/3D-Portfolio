@@ -101,14 +101,14 @@ const ComputersCanvas = () => {
       shadows
       camera={{ position: [15, 3, 35], fov: `${isMobile ? 18 : 15}` }}
       gl={{ preserveDrawingBuffer: true, powerPreference: "high-performance" }}
-      className="z-[-1]"
+      className="z-[0]"
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           onContextMenu={(event) => event.preventDefault()}
-          enableZoom={false}
-          enablePan={false}
-          enableRotate={false}
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
