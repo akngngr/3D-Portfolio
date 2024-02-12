@@ -18,7 +18,7 @@ const ProjectCard = ({
 }) => {
 
   return (
-    <div>
+    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
           max: 45,
@@ -68,14 +68,14 @@ const ProjectCard = ({
           ))}
         </div>
       </Tilt>
-    </div>
+    </motion.div>
   );
 };
 
 const Works = () => {
   return (
     <>
-      <div>
+      <motion.div>
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       
@@ -97,9 +97,9 @@ const Works = () => {
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
-      </div>
+      </motion.div>
     </>
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, "work");
