@@ -16,15 +16,14 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   return (
-    <Tilt className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3">
-      <motion.div variants={fadeIn("up", "spring", 0.5 * index, 0.75)}>
+    <motion.div variants={fadeIn("up", "spring", 0.5 * index, 0.75)}>
+      <Tilt className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3">
         <div
           options={{
             max: 45,
             scale: 1,
             speed: 450,
           }}
-          
         >
           <div className="relative w-full h-[230px]">
             <img
@@ -67,8 +66,8 @@ const ProjectCard = ({
             ))}
           </div>
         </div>
-      </motion.div>
-    </Tilt>
+      </Tilt>
+    </motion.div>
   );
 };
 
