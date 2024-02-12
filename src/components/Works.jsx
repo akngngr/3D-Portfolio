@@ -18,6 +18,7 @@ const ProjectCard = ({
 }) => {
 
   return (
+    <>
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
@@ -69,6 +70,7 @@ const ProjectCard = ({
         </div>
       </Tilt>
     </motion.div>
+    </>
   );
 };
 
@@ -78,10 +80,10 @@ const Works = () => {
       <motion.div>
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      
+      </motion.div>
 
-      <div className="w-full flex">
-        <p
+      <motion.div className="w-full flex">
+        <motion.p
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
           Following projects showcases my skills and experience through
@@ -89,15 +91,14 @@ const Works = () => {
           links to code repositories and live demos in it. It reflects my
           ability to solve complex problems, work with different technologies,
           and manage projects effectively.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       <div className="my-5 flex flex-wrap justify-center gap-5">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
-      </motion.div>
     </>
   );
 };
