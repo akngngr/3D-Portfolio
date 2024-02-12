@@ -17,10 +17,10 @@ const ProjectCard = ({
 }) => {
   return (
     <Tilt className="bg-tertiary p-5 rounded-2xl w-[360px] mt-3">
-      {/* <motion.div
+      <motion.div
         variants={fadeIn("up", "spring", 0.5 * index, 0.75)} 
-      > */}
-      <div>
+      >
+      {/* <div> */}
         <div
           options={{
             max: 45,
@@ -69,8 +69,8 @@ const ProjectCard = ({
             ))}
           </div>
         </div>
-        </div>
-      {/* </motion.div> */}
+        {/* </div> */}
+      </motion.div>
     </Tilt>
   );
 };
@@ -81,7 +81,7 @@ const Works = () => {
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
-      </motion.div>
+      
 
       <motion.p
         variants={fadeIn("up", "spring", 0.1, 1)}
@@ -99,6 +99,7 @@ const Works = () => {
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
       </div>
+      </motion.div>
     </>
   );
 };
