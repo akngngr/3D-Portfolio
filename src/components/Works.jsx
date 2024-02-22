@@ -18,7 +18,7 @@ const ProjectCard = ({
 }) => {
 
   return (
-    <Tilt className="border border-solid border-red-600 xs:w-[280px] w-[360px]">
+    <Tilt>
       <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)}>
         <div
           options={{
@@ -80,11 +80,12 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <motion.div variants={textVariant()} className="mt-6">
+      <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>My work</p>
         <h2 className={styles.sectionHeadText}>Projects.</h2>
       </motion.div>
 
+      <div className="w-full flex">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
@@ -95,6 +96,7 @@ const Works = () => {
           ability to solve complex problems, work with different technologies,
           and manage projects effectively.
         </motion.p>
+      </div>
 
       <div className="my-5 flex flex-wrap justify-center gap-5">
         {projects.map((project, index) => (
