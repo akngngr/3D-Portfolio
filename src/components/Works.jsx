@@ -18,7 +18,7 @@ const ProjectCard = ({
 }) => {
 
   return (
-    <Tilt>
+    <Tilt className="border border-solid border-red-600 w-[360px]">
       <motion.div variants={fadeIn("right", "spring", 0.5 * index, 0.75)}>
         <div
           options={{
