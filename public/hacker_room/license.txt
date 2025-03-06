@@ -1,11 +1,11 @@
 Model Information:
-* title:	Hacker Room - Stylized
-* source:	https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10
-* author:	david.campuzano (https://sketchfab.com/david.campuzano)
+* title:	Maiden's Tower
+* source:	https://sketchfab.com/3d-models/maidens-tower-37f24564b1c446e7b2e99d5ae635ceda
+* author:	Erbay Çelik (https://sketchfab.com/erbaycelik)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Maiden's Tower" (https://sketchfab.com/3d-models/maidens-tower-37f24564b1c446e7b2e99d5ae635ceda) by Erbay Çelik (https://sketchfab.com/erbaycelik) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

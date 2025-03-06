@@ -43,20 +43,19 @@ const Navbar = () => {
           <img src={alogo} alt={alogo} className="w-12 h-12 object-contain" />
           <p className="text-white text-[18] font-bold cursor-pointer flex">
             Akın &nbsp;
-            <span className="sm:block hidden">| Gungor</span>
+            <span className="sm:block hidden">Gungor</span>
           </p>
         </Link>
         <ul className="list-none hidden md:flex flex-row gap-10">
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`${
-                active === link.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer hover:scale-125 ease-out duration-300`}
+              className={`${active === link.title ? "text-white" : "text-secondary"
+                } hover:text-white text-[18px] font-medium cursor-pointer hover:scale-125 ease-out duration-300`}
               onClick={() => setActive(link.title)}
             >
               <div className="flex gap-2">
-                {link.icon && <a href={link.url}><img src={link.icon} className="h-6"/></a>}
+                {link.icon && <a href={link.url}><img src={link.icon} className="h-6" /></a>}
                 <a href={`#${link.id}`}>{link.title}</a>
               </div>
             </li>
@@ -71,25 +70,23 @@ const Navbar = () => {
           />
           {/* Mobile nav */}
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-2[140px] z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"
+              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-2[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-end flex-col gap-4">
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`${
-                    active === link.title ? "text-white" : "text-secondary"
-                  } font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`${active === link.title ? "text-white" : "text-secondary"
+                    } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(link.title);
                   }}
                 >
                   <div>
-                  {link.icon && <a href={link.url}><img src={link.icon} className="h-6"/></a>}
-                  <a href={`#${link.id}`}>{link.title}</a>
+                    {link.icon && <a href={link.url}><img src={link.icon} className="h-6" /></a>}
+                    <a href={`#${link.id}`}>{link.title}</a>
                   </div>
                 </li>
               ))}
