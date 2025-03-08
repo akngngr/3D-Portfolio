@@ -1,5 +1,4 @@
 import {
-  backend,
   javascript,
   typescript,
   html,
@@ -15,9 +14,6 @@ import {
   vite,
   freelance,
   ak,
-  code,
-  atom,
-  gamedev,
   crypto,
   dalle,
   chatgpt,
@@ -56,21 +52,21 @@ export const navLinks = [
 const services = [
   {
     title: "Front-End Development",
-    icon: "path_to_icon.png",
+    icon: "/frontend.jpg",
     description: "Building modern, responsive, and interactive web applications using React, Next.js, and more.",
     skills: ["React", "Next.js", "TailwindCSS", "JavaScript", "HTML5", "CSS3"],
     background: "Frontend"
   },
   {
     title: "AI & Machine Learning",
-    icon: "path_to_icon.png",
+    icon: "/AI.jpg",
     description: "Leveraging AI technologies to build smart, data-driven features and tools.",
     skills: ["Python", "TensorFlow", "Machine Learning", "AI Integration"],
     background: "AI"
   },
   {
     title: "Game Modding & Scripting",
-    icon: "path_to_icon.png",
+    icon: "/game.jpg",
     description: "Developing custom game mods and scripts using Lua and FiveM for GTA V.",
     skills: ["Lua", "FiveM", "Game Development", "Custom Physics", "Multiplayer"],
     background: "Game"

@@ -41,7 +41,7 @@ const Computers = ({ isMobile, scrollProgress }) => {
         <primitive
           object={computer.scene}
           scale={[scale, scale, scale]}
-          position={isMobile ? [0, -15, 0] : [0, -15, 0]}
+          position={isMobile ? [0, -10, 0] : [0, -15, 0]}
         />
       )}
     </mesh>
