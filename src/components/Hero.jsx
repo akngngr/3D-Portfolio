@@ -15,14 +15,14 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 green-gradient" />
         </div>
 
-        <div>
+        <div className="z-10">
           <h1 className={`${styles.heroHeadText} text-white`}>
             Hi, I'm <span className="text-[#087e00]">Akın</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop 3D models,
+            I build AI-powered systems and web apps,
             <br className="sm:block hidden" />
-            user interfaces, and web apps.{" "}
+            debug across the full stack, <br className="sm:block hidden" />and ship tools that make a real difference.{" "}
           </p>
         </div>
       </div>

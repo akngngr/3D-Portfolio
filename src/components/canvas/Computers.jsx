@@ -1,118 +1,105 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState, useMemo } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Preload,
-  useGLTF,
-  useAnimations,
-} from "@react-three/drei";
+import { OrbitControls, Preload } from "@react-three/drei";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
-import CanvasLoader from "../Loader";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { scroll } from "framer-motion";
+const Computers = ({ isMobile, scrollProgress }) => {
 
-const gltfLoader = new GLTFLoader();
+  /*
+  This work is based on "Maiden's Tower" (https://sketchfab.com/3d-models/maidens-tower-37f24564b1c446e7b2e99d5ae635ceda) by Erbay Çelik (https://sketchfab.com/erbaycelik) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+  */
+  const computer = useLoader(GLTFLoader, "./hacker_room/scene.glb");
+  const modelRef = useRef();
 
-// Using Draco for compressed glb file - improves 3D loading.
-// const dLoader = new DRACOLoader();
-// dLoader.preload();
-// dLoader.setDecoderPath(
-//   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
-// );
-// dLoader.setDecoderConfig({ type: "js" });
-// gltfLoader.setDRACOLoader(dLoader);
-// const renderer = new THREE.WebGLRenderer()
+  useEffect(() => {
+    let mixer;
+    if (computer.animations.length) {
+      mixer = new THREE.AnimationMixer(computer.scene);
+      computer.animations.forEach((clip) => {
+        const action = mixer.clipAction(clip);
+        action.play();
+      });
+    }
+    return () => mixer?.stopAllAction();
+  }, [computer]);
 
-
-let mixer;
-
-const Computers = ({ isMobile }) => {
-  
-  /* This work is based on "Hacker Room - Stylized" (https://sketchfab.com/3d-models/hacker-room-stylized-a0cfe6edf2dd494c8a95addf6bb13a10) by david.campuzano (https://sketchfab.com/david.campuzano) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)*/
-
-  const computer = useGLTF("./hacker_room/scene.glb");
-
-  if (computer.animations.length) {
-    mixer = new THREE.AnimationMixer(computer.scene);
-    computer.animations.forEach((clip) => {
-      const action = mixer.clipAction(clip);
-      action.play();
-    });
-  }
-
-  useFrame((state, delta) => {
-    mixer?.update(delta);
+  useFrame(() => {
+    if (modelRef.current) {
+      const targetRotation = THREE.MathUtils.degToRad(180 + scrollProgress * 360);
+      if (Math.abs(modelRef.current.rotation.y - targetRotation) > 0.01) {
+        modelRef.current.rotation.y = THREE.MathUtils.lerp(modelRef.current.rotation.y, targetRotation, 0.1);
+      }
+    }
   });
 
+  const scale = useMemo(() => (isMobile ? 2 : 2), [isMobile]);
+
   return (
-    <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />
-      <pointLight intensity={1} />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={isMobile ? 512 : 1024}
-      />
-      <primitive
-        object={computer.scene}
-        scale={isMobile ? 0.02 : 0.03}
-        position={isMobile ? [0.2, -2.25, 0] : [0.2, -2, 0]}
-        rotation={[0.5, 3.5, 0.2]}
-      />
+    <mesh ref={modelRef}>
+      {computer?.scene && (
+        <primitive
+          object={computer.scene}
+          scale={[scale, scale, scale]}
+          position={isMobile ? [0, -10, 0] : [0, -15, 0]}
+        />
+      )}
     </mesh>
   );
 };
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Changes isMobile variable
   useEffect(() => {
-    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the 'isMobile' state variable
     setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    };
-
-    // Add the callback function as a listener for changes to the media query
+    const handleMediaQueryChange = (event) => setIsMobile(event.matches);
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-    };
+    return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollTop / docHeight, 1);
+      setScrollProgress(progress);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Canvas
       shadows
-      camera={{ position: [15, 3, 35], fov: `${isMobile ? 18 : 15}` }}
-      gl={{ preserveDrawingBuffer: true, powerPreference: "high-performance" }}
-      className="z-[-1]"
+      camera={{
+        position: isMobile ? [15, -8, 35] : [15, -8, 35],
+        fov: 60,
+      }}
+      gl={{
+        preserveDrawingBuffer: true,
+        powerPreference: "high-performance",
+        antialias: true,
+      }}
+      className="-z-10"
     >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          onContextMenu={(event) => event.preventDefault()}
-          enableZoom={false}
-          enablePan={false}
-          enableRotate={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
+      <Suspense fallback={null}>
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+        {/* Balanced Lighting */}
+        <ambientLight intensity={0.05} />
+        <hemisphereLight intensity={0.25} groundColor="#333" />
+        <pointLight intensity={0} position={[5, 10, 5]} />
+        <directionalLight
+          intensity={1.5}
+          position={[5, 10, 5]}
+          castShadow
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
         />
-        <Computers isMobile={isMobile} />
+        <Computers isMobile={isMobile} scrollProgress={scrollProgress} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );

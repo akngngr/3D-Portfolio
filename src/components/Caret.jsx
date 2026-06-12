@@ -12,14 +12,14 @@ const Caret = () => {
   }
 
   return (
-    <div id='scrollToTop' className="md:block absolute bottom-10 right-0 rounded-full bg-green-700 sm:hidden hover:-translate-y-3 cursor-pointer ease-in-out duration-200">
+    <div id='scrollToTop' className="md:block absolute bottom-3 right-3 rounded-full bg-green-700 sm:hidden cursor-pointer">
         <a onClick={() => {
             handleScroll();
             window.scrollTo({
               top: 0,
               behavior: "smooth"            
           }); // Scroll to the top of the page
-          }}><img src={CaretIcon} alt="caret" /></a>
+          }}><img src={CaretIcon} className='hover:-translate-y-1 ease-in-out duration-200' alt="Scroll To Top" /></a>
     </div>
   )
 }
