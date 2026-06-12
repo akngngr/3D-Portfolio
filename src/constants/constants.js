@@ -24,11 +24,8 @@ import {
   linkedin,
 } from "../assets";
 
-<<<<<<< HEAD
-=======
 import scanner from "../assets/project/cad.png";
 
->>>>>>> root
 export const navLinks = [
   {
     id: "about",
@@ -56,19 +53,6 @@ export const navLinks = [
 
 const services = [
   {
-<<<<<<< HEAD
-    title: "Front-End Development",
-    icon: "/frontend.jpg",
-    description: "Building modern, responsive, and interactive web applications using React, Next.js, and more.",
-    skills: ["React", "Next.js", "TailwindCSS", "JavaScript", "HTML5", "CSS3"],
-    background: "Frontend"
-  },
-  {
-    title: "AI & Machine Learning",
-    icon: "/AI.jpg",
-    description: "Leveraging AI technologies to build smart, data-driven features and tools.",
-    skills: ["Python", "TensorFlow", "Machine Learning", "AI Integration"],
-=======
     title: "Support & AI Systems Engineering",
     icon: "/frontend.jpg",
     description: "Bridging support and engineering with code-level debugging, KQL diagnostics, and full dev-to-prod delivery for an enterprise platform serving 7M users.",
@@ -80,7 +64,6 @@ const services = [
     icon: "/AI.jpg",
     description: "Architecting RAG-based knowledge retrieval, autonomous ticket workflows, and generative AI features on Azure OpenAI — led the rollout of GPT-4.5 and DALL-E to pilot clients.",
     skills: ["Azure OpenAI", "RAG Pipelines", "Vector Search", "Python", "Zendesk AI", "Codex"],
->>>>>>> root
     background: "AI"
   },
   {
@@ -96,17 +79,6 @@ const services = [
 
 const technologies = [
   {
-<<<<<<< HEAD
-    name: "HTML 5",
-    icon: html,
-  },
-  {
-    name: "CSS 3",
-    icon: css,
-  },
-  {
-=======
->>>>>>> root
     name: "JavaScript",
     icon: javascript,
   },
@@ -119,10 +91,6 @@ const technologies = [
     icon: reactjs,
   },
   {
-<<<<<<< HEAD
-    name: "vite",
-    icon: vite,
-=======
     name: "Node JS",
     icon: nodejs,
   },
@@ -137,20 +105,14 @@ const technologies = [
   {
     name: "CSS 3",
     icon: css,
->>>>>>> root
   },
   {
     name: "Tailwind CSS",
     icon: tailwind,
   },
   {
-<<<<<<< HEAD
-    name: "Node JS",
-    icon: nodejs,
-=======
     name: "vite",
     icon: vite,
->>>>>>> root
   },
   {
     name: "MongoDB",
@@ -168,38 +130,16 @@ const technologies = [
     name: "mui",
     icon: mui,
   },
-<<<<<<< HEAD
-  {
-    name: "azure",
-    icon: azure,
-  },
-=======
->>>>>>> root
 ];
 
 const experiences = [
   {
-<<<<<<< HEAD
-    title: "Software Support Engineer II",
-=======
     title: "Senior Technical Support Engineer",
->>>>>>> root
     company_name: "Akumina",
     icon: ak,
     iconBg: "#383E56",
     date: "April 2022 - Present",
     points: [
-<<<<<<< HEAD
-      "Provide expert software and developer support for global enterprise clients, focusing on frontend technologies.",
-      "Lead installation, configuration, and environment upgrades for Production and Development systems, optimizing frontend performance.",
-      "Collaborate with development teams to resolve frontend software bugs and communicate actionable resolutions effectively.",
-      "Analyze error logs, conduct Root Cause Analysis, and provide frontend-focused troubleshooting solutions.",
-      "Technologies: HTML5, CSS3, JavaScript, React, Git, Azure.",
-    ],
-  },
-  {
-    title: "Web Developer",
-=======
       "Debug across the full stack — C#/.NET, JS/TS, and JSX — to reproduce bugs, compare product releases via Git version history, and document findings through product triage. Commit customer-specific API configs, DLLs, and deployment requests directly, bridging support and engineering.",
       "Built and maintain a versioned KQL diagnostic library used by support and engineering, covering deployment errors, authentication failures, SharePoint communication issues, API endpoint health, AI endpoint errors, search degradation, and cloud performance metrics — cutting issue resolution times by 50%.",
       "Shipped React/JSX view templates and UI components for client-facing customizations, including data callbacks and UI logic, from dev testing through CI/CD to production. Authored CI/CD pipeline scripts that reduced upgrade durations by 60%.",
@@ -212,24 +152,16 @@ const experiences = [
   },
   {
     title: "Full Stack & Infrastructure Engineer",
->>>>>>> root
     company_name: "Freelance",
     icon: freelance,
     iconBg: "#E6DEDD",
     date: "Jan 2018 - Present",
     points: [
-<<<<<<< HEAD
-      "Develop and maintain web applications with ReactJS, ensuring high performance and user-friendly experiences.",
-      "Translate designs into scalable and maintainable React components while ensuring cross-browser compatibility.",
-      "Collaborate with teams to deliver high-quality products and participate in code reviews to enhance code quality.",
-      "Implement responsive design and work closely with clients to meet their project requirements.",
-=======
       "Built a React-based 3D model inspection tool that calculates volume and length measurements from OBJ and STL files — replicating core slicer functionality for rapid pre-print prototype review. Started as a weekend project and iterated over time to add shape recognition.",
       "Design and ship custom React/Next.js frontend features for clients who need functionality outside standard project scope — JSX components, data callback logic, and UI integrations delivered through a full dev-to-prod cycle.",
       "Use Codex and local LLMs (Qwen3-coder) regularly to prototype product ideas, accelerate development cycles, and explore architecture tradeoffs.",
       "Supported infrastructure for an enterprise pharma client during a large-scale Active Directory domain migration, resolving technical escalations throughout the transition.",
       "Develop custom FiveM multiplayer server modifications in Lua to optimize server performance and create engaging player experiences.",
->>>>>>> root
     ],
   },
 ];
@@ -264,8 +196,6 @@ const testimonials = [
 
 const projects = [
   {
-<<<<<<< HEAD
-=======
     name: "3D Model Inspector (Slicer-style)",
     description:
       "React-based tool that calculates volume and length measurements from OBJ and STL files for quick pre-print inspection of 3D models — replicates core slicer functionality, with iterative shape-recognition features built over time.",
@@ -287,7 +217,6 @@ const projects = [
     source_code_link: "https://github.com/akngngr",
   },
   {
->>>>>>> root
     name: "DALL-E 2.0 Clone",
     description:
       "Web-based platform that allows users to create and post AI images generated by DALL-E Chat GPT engine, providing a social timeline to allow users view and collaborate artwork.",
@@ -353,11 +282,7 @@ const projects = [
   {
     name: "Workout App",
     description:
-<<<<<<< HEAD
-      "A comprehensive gym exercise platform that allows users to search all kinds of exercises by muscle group, exercise or equipment type.With the functionality to choose exercise categories and specific muscle groups, browse more than one thousand exercises with practical examples, pagination, exercise details, pull related videos from Youtube, display similar exercises, and much more.",
-=======
       "A comprehensive gym exercise platform that allows users to search all kinds of exercises by muscle group, exercise or equipment type. With the functionality to choose exercise categories and specific muscle groups, browse more than one thousand exercises with practical examples, pagination, exercise details, pull related videos from Youtube, display similar exercises, and much more.",
->>>>>>> root
     tags: [
       {
         name: "nextjs",
@@ -399,11 +324,7 @@ const projects = [
   {
     name: "Pinterest Clone",
     description:
-<<<<<<< HEAD
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-=======
       "A Pinterest-style image discovery and collection app with masonry layouts and search.",
->>>>>>> root
     tags: [
       {
         name: "react",
@@ -421,33 +342,6 @@ const projects = [
     image: pinterest,
     source_code_link: "https://github.com/",
   },
-<<<<<<< HEAD
-  // {
-  //   name: "Weather App",
-  //   description:
-  //     "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-  //   tags: [
-  //     {
-  //       name: "nextjs",
-  //       color: "blue-text-gradient",
-  //     },
-  //     {
-  //       name: "supabase",
-  //       color: "green-text-gradient",
-  //     },
-  //     {
-  //       name: "css",
-  //       color: "pink-text-gradient",
-  //     },
-  //   ],
-  //   image: tripguide,
-  //   source_code_link: "https://github.com/akngngr/live-weather",
-  // },
 ];
 
 export { services, technologies, experiences, testimonials, projects };
-=======
-];
-
-export { services, technologies, experiences, testimonials, projects };
->>>>>>> root
