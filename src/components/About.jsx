@@ -154,7 +154,11 @@ function About() {
           variants={textVariant()}
           className="text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
+<<<<<<< HEAD
           I'm a seasoned software developer and support engineer with a passion for crafting innovative digital solutions. I build responsive web applications, interactive e-learning modules, custom game mods, and AI-powered functionalities that combine technical excellence with creative flair. Leveraging Agile methodologies, I transform complex challenges into elegant, user-centric interfaces that are as robust as they are engaging. I'm driven by collaboration and continuous learning, and I believe that professionalism can come with a touch of creative fun. Let's connect to design digital experiences that are both efficient and delightfully inspiring!
+=======
+          I'm a Software Engineer embedded in Support, working across C#/.NET, JavaScript/TypeScript, React, and Python to debug, build, and ship for an enterprise platform serving 7M users. I led the engineering rollout of generative AI features on Azure OpenAI — including a RAG-based knowledge retrieval system that cut KB search time by 50% and ticket resolution time by 25% — and maintain a versioned KQL diagnostic library used across support and engineering. Outside of work, I prototype with Codex and local LLMs, build custom tools like a React-based 3D model inspector, and develop game mods in Lua. I'm driven by closing the gap between what engineering builds and what customers actually experience — let's connect!
+>>>>>>> root
         </p>
       </motion.div>
 
