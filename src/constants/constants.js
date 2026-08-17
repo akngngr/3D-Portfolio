@@ -69,7 +69,7 @@ const services = [
     title: "Full-Stack & Systems",
     icon: "/game.jpg",
     description: "Debugging and shipping across the API boundary when a feature needs it, C#/.NET services, SQL, and diagnostic tooling used across teams.",
-    skills: ["C# / .NET", "SQL", "KQL", "Node.js", "Azure DecOps"]
+    skills: ["C# / .NET", "SQL", "KQL", "Node.js", "Azure DevOps"]
   },
 ];
 
