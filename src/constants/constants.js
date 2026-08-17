@@ -54,7 +54,7 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Support & AI Systems Engineering",
+    title: "Frontend Engineering",
     icon: "/frontend.jpg",
     description: "Building clean, production React/TypeScript interfaces, component architecture, API integration, and UI shipped from dev to production for a 7M-user platform.",
     skills: ["React", "TypeScript", "Next.js", "JSX", "REST APIs", "Git"]
@@ -151,8 +151,8 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Jan 2018 - Present",
     points: [
-      "Independent contractor designing and shipping custom React/Next.js frontend features end-to-end, including the 3D Model Inspector and Voxel Analytics Dashboard projects below.",
-      "Use Codex and local LLMs (Qwen3-coder) regularly to prototype product ideas, accelerate development cycles, and explore architecture tradeoffs.",
+      "Independent contractor designing and shipping custom React/Next.js frontend features end-to-end, including the 3D Model Inspector and Voxal Analytics Dashboard projects below.",
+      "Use Claude Code, Codex and local LLMs (Qwen3-coder) regularly to prototype product ideas, accelerate development cycles, and explore architecture tradeoffs.",
       "Supported infrastructure for an enterprise pharma client during a large-scale Active Directory domain migration, resolving technical escalations throughout the transition.",
     ],
   }
@@ -292,27 +292,6 @@ const projects = [
     ],
     image: gym,
     source_code_link: "https://github.com/akngngr/gym-exercises",
-  },
-  {
-    name: "Crypto Tracker",
-    description:
-      "View live changes on Crypto.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "axios",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: crypto,
-    source_code_link: "https://github.com/akngngr/crypto-api-project",
   }
 ];
 
