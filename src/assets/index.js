@@ -32,10 +32,11 @@ import ak from "./company/ak.png";
 
 import crypto from "./project/crypto.png";
 import dalle from "./project/dalle.png";
-import chatgpt from "./project/chatgpt.png";
 import booking from "./project/booking.png";
 import gym from "./project/gym.png";
 import pinterest from "./project/pinterest.png";
+import voxal from "./project/voxal.png";
+import cad from "./project/cad.png";
 
 export {
   logo,
@@ -68,10 +69,10 @@ export {
   gamedev,
   crypto,
   dalle,
-  chatgpt,
   booking,
   gym,
   three,
   pinterest,
-  
+  voxal,
+  cad
 };

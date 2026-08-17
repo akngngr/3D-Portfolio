@@ -16,12 +16,13 @@ import {
   ak,
   crypto,
   dalle,
-  chatgpt,
   booking,
   gym,
   pinterest,
   github,
   linkedin,
+  voxal,
+  cad
 } from "../assets";
 
 import scanner from "../assets/project/cad.png";
@@ -55,23 +56,20 @@ const services = [
   {
     title: "Support & AI Systems Engineering",
     icon: "/frontend.jpg",
-    description: "Bridging support and engineering with code-level debugging, KQL diagnostics, and full dev-to-prod delivery for an enterprise platform serving 7M users.",
-    skills: ["C# / .NET", "JavaScript / TypeScript", "React", "KQL", "Azure DevOps", "Git"],
-    background: "Frontend"
+    description: "Building clean, production React/TypeScript interfaces, component architecture, API integration, and UI shipped from dev to production for a 7M-user platform.",
+    skills: ["React", "TypeScript", "Next.js", "JSX", "REST APIs", "Git"]
   },
   {
-    title: "AI & Generative Systems",
+    title: "Forward-Deployed & AI-Integrated Delivery",
     icon: "/AI.jpg",
-    description: "Architecting RAG-based knowledge retrieval, autonomous ticket workflows, and generative AI features on Azure OpenAI — led the rollout of GPT-4.5 and DALL-E to pilot clients.",
-    skills: ["Azure OpenAI", "RAG Pipelines", "Vector Search", "Python", "Zendesk AI", "Codex"],
-    background: "AI"
+    description: "Owning the technical relationship inside enterprise client environments, architecting and shipping generative AI features (Azure OpenAI, RAG) end-to-end, from integration to live debugging.",
+    skills: ["Azure OpenAI", "RAG", "Vector Search", "Python", "Claude Code", "Codex"]
   },
   {
-    title: "Game Modding & Scripting",
+    title: "Full-Stack & Systems",
     icon: "/game.jpg",
-    description: "Developing custom game mods and scripts using Lua and FiveM for GTA V.",
-    skills: ["Lua", "FiveM", "Game Development", "Custom Physics", "Multiplayer"],
-    background: "Game"
+    description: "Debugging and shipping across the API boundary when a feature needs it, C#/.NET services, SQL, and diagnostic tooling used across teams.",
+    skills: ["C# / .NET", "SQL", "KQL", "Node.js", "Azure DecOps"]
   },
 ];
 
@@ -99,11 +97,11 @@ const technologies = [
     icon: azure,
   },
   {
-    name: "HTML 5",
+    name: "HTML5",
     icon: html,
   },
   {
-    name: "CSS 3",
+    name: "CSS3",
     icon: css,
   },
   {
@@ -111,7 +109,7 @@ const technologies = [
     icon: tailwind,
   },
   {
-    name: "vite",
+    name: "Vite",
     icon: vite,
   },
   {
@@ -119,15 +117,15 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: "Three JS",
+    name: "ThreeJS",
     icon: three,
   },
   {
-    name: "git",
+    name: "Git",
     icon: git,
   },
   {
-    name: "mui",
+    name: "MUI",
     icon: mui,
   },
 ];
@@ -138,16 +136,12 @@ const experiences = [
     company_name: "Akumina",
     icon: ak,
     iconBg: "#383E56",
-    date: "April 2022 - Present",
+    date: "April 2022 - July 2026",
     points: [
-      "Debug across the full stack — C#/.NET, JS/TS, and JSX — to reproduce bugs, compare product releases via Git version history, and document findings through product triage. Commit customer-specific API configs, DLLs, and deployment requests directly, bridging support and engineering.",
-      "Built and maintain a versioned KQL diagnostic library used by support and engineering, covering deployment errors, authentication failures, SharePoint communication issues, API endpoint health, AI endpoint errors, search degradation, and cloud performance metrics — cutting issue resolution times by 50%.",
+      "Full-stack engineer owning features end-to-end React/TypeScript UI, REST API integration, and production debugging for a 7M-user platform.",
+      "Served as primary technical point of contact for one of the company's largest clients, a Fortune 500 pharmaceutical company, over multiple years.",
       "Shipped React/JSX view templates and UI components for client-facing customizations, including data callbacks and UI logic, from dev testing through CI/CD to production. Authored CI/CD pipeline scripts that reduced upgrade durations by 60%.",
-      "Led support-side engineering for Akumina's generative AI rollout — primary technical lead delivering Azure OpenAI (GPT-4.5, DALL-E) features to pilot clients in the CMS content authoring workflow. Debugged AI API endpoints across dev/prod clouds, validated connectivity end-to-end, and trained the support team on new tooling.",
-      "Architected a RAG-based knowledge retrieval system on Azure OpenAI that indexes ticket descriptions, KB articles, and resolved tickets to surface relevant context at ticket open — reducing KB search time by 50% and overall resolution time by 25%. Collaborated with engineering on vector DB setup, embedding pipelines, and Azure AI Search configuration.",
-      "Engineered 5 autonomous Zendesk AI response workflows covering widgets, API issues, customization/project-kickoff, cloud hosting/outages, and upgrades — auto-summarizing ticket status for cross-functional visibility across Support, Customer Success, and Engineering.",
-      "Managed global build deployments and environment-specific configurations via Azure DevOps CI/CD, maintaining 24/7 availability for a 7M-user platform.",
-      "Technologies: Python, C#/.NET, JavaScript/TypeScript, React, KQL, Azure DevOps, Azure OpenAI, Git",
+      "Led the technical rollout of generative AI features (Azure OpenAI, RAG-based retrieval) from pilot to production.",
     ],
   },
   {
@@ -157,13 +151,11 @@ const experiences = [
     iconBg: "#E6DEDD",
     date: "Jan 2018 - Present",
     points: [
-      "Built a React-based 3D model inspection tool that calculates volume and length measurements from OBJ and STL files — replicating core slicer functionality for rapid pre-print prototype review. Started as a weekend project and iterated over time to add shape recognition.",
-      "Design and ship custom React/Next.js frontend features for clients who need functionality outside standard project scope — JSX components, data callback logic, and UI integrations delivered through a full dev-to-prod cycle.",
+      "Independent contractor designing and shipping custom React/Next.js frontend features end-to-end, including the 3D Model Inspector and Voxel Analytics Dashboard projects below.",
       "Use Codex and local LLMs (Qwen3-coder) regularly to prototype product ideas, accelerate development cycles, and explore architecture tradeoffs.",
       "Supported infrastructure for an enterprise pharma client during a large-scale Active Directory domain migration, resolving technical escalations throughout the transition.",
-      "Develop custom FiveM multiplayer server modifications in Lua to optimize server performance and create engaging player experiences.",
     ],
-  },
+  }
 ];
 
 
@@ -196,30 +188,52 @@ const testimonials = [
 
 const projects = [
   {
-    name: "3D Model Inspector (Slicer-style)",
+    name: "Voxal Analytics Dashboard",
     description:
-      "React-based tool that calculates volume and length measurements from OBJ and STL files for quick pre-print inspection of 3D models — replicates core slicer functionality, with iterative shape-recognition features built over time.",
+      "Voice and text-driven analytics dashboard - ask a question about a dataset out loud or by typing, and Gemini parses it into a live chart. Supports CSV upload for arbitrary datasets, with dynamic schema inference and query-to-chart mapping built from scratch.",
     tags: [
       {
-        name: "react",
+        name: "nextjs",
         color: "blue-text-gradient",
       },
       {
-        name: "three.js",
+        name: "typescript",
         color: "green-text-gradient",
       },
       {
-        name: "javascript",
+        name: "gemini-api",
         color: "pink-text-gradient",
       },
     ],
-    image: scanner,
-    source_code_link: "https://github.com/akngngr",
+    image: voxal,
+    source_code_link: "https://github.com/akngngr/voxal-voice-dashboard",
+    live_link: "https://voxal-voice-dashboard.vercel.app"
   },
   {
-    name: "DALL-E 2.0 Clone",
+    name: "Printmeasure - 3D Model Inspector",
     description:
-      "Web-based platform that allows users to create and post AI images generated by DALL-E Chat GPT engine, providing a social timeline to allow users view and collaborate artwork.",
+      "React-based tool that calculates volume, length, and material estimates from OBJ and STL files for quick pre-print inspection of 3D models — replicates core slicer functionality, including iterative shape-recognition and filament weight/length analysis for common printing materials.", tags: [
+        {
+          name: "react",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "three.js",
+          color: "green-text-gradient",
+        },
+        {
+          name: "javascript",
+          color: "pink-text-gradient",
+        },
+      ],
+    image: cad,
+    source_code_link: "https://github.com/akngngr",
+    live_link: "https://printmeasure.vercel.app"
+  },
+  {
+    name: "AI Pinboard",
+    description:
+      "Web-based platform that allows users to create and post AI images generated by DALL-E engine, providing a social timeline to allow users view and collaborate artwork.",
     tags: [
       {
         name: "react",
@@ -236,27 +250,6 @@ const projects = [
     ],
     image: dalle,
     source_code_link: "https://github.com/akngngr/ai-image-social",
-  },
-  {
-    name: "Chat GPT AI Clone",
-    description:
-      "Web application that allows users to search for answers to any questions using Chat GPT 3.5 engine.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: chatgpt,
-    source_code_link: "https://github.com/akngngr/codex",
   },
   {
     name: "Travel Booking App",
@@ -282,7 +275,7 @@ const projects = [
   {
     name: "Workout App",
     description:
-      "A comprehensive gym exercise platform that allows users to search all kinds of exercises by muscle group, exercise or equipment type. With the functionality to choose exercise categories and specific muscle groups, browse more than one thousand exercises with practical examples, pagination, exercise details, pull related videos from Youtube, display similar exercises, and much more.",
+      "A comprehensive gym exercise platform featuring 1,000+ exercises filterable by muscle group or equipment, complete with detailed guides, video tutorials, and targeted recommendations.",
     tags: [
       {
         name: "nextjs",
@@ -320,28 +313,7 @@ const projects = [
     ],
     image: crypto,
     source_code_link: "https://github.com/akngngr/crypto-api-project",
-  },
-  {
-    name: "Pinterest Clone",
-    description:
-      "A Pinterest-style image discovery and collection app with masonry layouts and search.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "MUI",
-        color: "skyblue-text-gradient",
-      },
-      {
-        name: "axios",
-        color: "green-text-gradient",
-      },
-    ],
-    image: pinterest,
-    source_code_link: "https://github.com/",
-  },
+  }
 ];
 
 export { services, technologies, experiences, testimonials, projects };
