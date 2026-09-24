@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants/constants.js";
@@ -32,34 +31,39 @@ const Navbar = () => {
     `}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
+        <a
+          href="#top"
           className="flex items-center gap-2"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0); // Scroll to the top of the page
           }}
         >
-          <img src={alogo} alt={alogo} className="w-12 h-12 object-contain" />
+          <img src={alogo} alt="Akın Gungor" className="w-12 h-12 object-contain" />
           <p className="text-white text-[18] font-bold cursor-pointer flex">
             Akın &nbsp;
             <span className="sm:block hidden">Gungor</span>
           </p>
-        </Link>
+        </a>
         <ul className="list-none hidden md:flex flex-row gap-10">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className={`${active === link.title ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer hover:scale-125 ease-out duration-300`}
-              onClick={() => setActive(link.title)}
-            >
-              <div className="flex gap-2">
-                {link.icon && <a href={link.url}><img src={link.icon} className="h-6" /></a>}
+          {navLinks.map((link) =>
+            link.title ? (
+              <li
+                key={link.id}
+                className={`${active === link.title ? "text-white" : "text-secondary"
+                  } hover:text-white text-[18px] font-medium cursor-pointer hover:scale-125 ease-out duration-300`}
+                onClick={() => setActive(link.title)}
+              >
                 <a href={`#${link.id}`}>{link.title}</a>
-              </div>
-            </li>
-          ))}
+              </li>
+            ) : (
+              <li key={link.id} className="flex items-center">
+                <a href={link.url} aria-label={link.id}>
+                  <img src={link.icon} alt={link.id} className="h-6 w-6" />
+                </a>
+              </li>
+            )
+          )}
         </ul>
         <div className="md:hidden flex flex-1 justify-end items-center">
           <img
@@ -74,22 +78,31 @@ const Navbar = () => {
               } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-2[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-end flex-col gap-4">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={`${active === link.title ? "text-white" : "text-secondary"
-                    } font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
-                >
-                  <div>
-                    {link.icon && <a href={link.url}><img src={link.icon} className="h-6" /></a>}
+              {navLinks.map((link) =>
+                link.title ? (
+                  <li
+                    key={link.id}
+                    className={`${active === link.title ? "text-white" : "text-secondary"
+                      } font-poppins font-medium cursor-pointer text-[16px]`}
+                    onClick={() => {
+                      setToggle(!toggle);
+                      setActive(link.title);
+                    }}
+                  >
                     <a href={`#${link.id}`}>{link.title}</a>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ) : (
+                  <li
+                    key={link.id}
+                    className="font-poppins font-medium cursor-pointer text-[16px]"
+                    onClick={() => setToggle(!toggle)}
+                  >
+                    <a href={link.url} aria-label={link.id}>
+                      <img src={link.icon} alt={link.id} className="h-6 w-6" />
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </div>
