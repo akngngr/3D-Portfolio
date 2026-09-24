@@ -1,16 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
   <defs>
-    <linearGradient id="ak" x1="0" y1="0" x2="1" y2="1">
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#a7f3d0" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#4ade80" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="back" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b7d4c"/>
+      <stop offset="1" stop-color="#0e5d2f"/>
+    </linearGradient>
+    <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#22c55e"/>
-      <stop offset="1" stop-color="#4ade80"/>
+      <stop offset="1" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="front" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15803d"/>
+      <stop offset="1" stop-color="#052e16"/>
     </linearGradient>
   </defs>
-  <rect x="4" y="4" width="112" height="112" rx="26" fill="none" stroke="url(#ak)" stroke-width="5"/>
-  <g fill="none" stroke="url(#ak)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M25 84 L41 28 L57 84"/>
-    <path d="M31 59 L51 59"/>
-    <path d="M79 28 V84"/>
-    <path d="M79 50 L96 31"/>
-    <path d="M79 52 L96 79"/>
-  </g>
+
+  <ellipse cx="60" cy="32" rx="54" ry="28" fill="url(#glow)" opacity="0.4"/>
+  <ellipse cx="60" cy="66" rx="56" ry="20" fill="url(#glow)" opacity="0.3"/>
+  <ellipse cx="60" cy="112" rx="58" ry="14" fill="url(#glow)" opacity="0.2"/>
+
+  <path d="M16 96 L60 26 L104 96 L120 120 L0 120 Z" fill="url(#back)"/>
+  <path d="M4 106 L40 56 L62 94 L84 56 L116 106 L120 120 L0 120 Z" fill="url(#mid)"/>
+  <path d="M0 120 L0 114 Q28 102 54 112 Q80 122 120 110 L120 120 Z" fill="url(#front)"/>
 </svg>

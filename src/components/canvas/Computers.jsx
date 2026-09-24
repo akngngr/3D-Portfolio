@@ -1,9 +1,14 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { OrbitControls, Preload, useProgress } from "@react-three/drei";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+
+// The top-right cloud in the model sits high on the right, right where the
+// hero text is, and sweeps across it while the entrance rotation plays, so
+// that node group is hidden once the scene loads.
+const HIDDEN_SCENE_NODES = new Set(["pCube749", "pCube749_bulutlar_0"]);
 
 const Computers = ({ isMobile, scrollProgress, ready }) => {
   /*
@@ -16,6 +21,10 @@ const Computers = ({ isMobile, scrollProgress, ready }) => {
   const groupRef = useRef();
 
   useEffect(() => {
+    computer.scene.traverse((child) => {
+      if (HIDDEN_SCENE_NODES.has(child.name)) child.visible = false;
+    });
+
     let mixer;
     if (computer.animations.length) {
       mixer = new THREE.AnimationMixer(computer.scene);
@@ -40,7 +49,10 @@ const Computers = ({ isMobile, scrollProgress, ready }) => {
       delta
     );
     const settle = group.userData.settle;
-    const baseY = isMobile ? -10 : -15;
+    // Narrow screens stack the hero text above the scene instead of beside it,
+    // so the model sits lower and a little smaller to stay clear of the text.
+    const baseY = isMobile ? -12.5 : -15;
+    const baseScale = isMobile ? 1.75 : 2;
 
     // Scroll: an elegant quarter-turn + subtle tilt that only plays while the
     // hero is leaving the viewport, not a full 360° spin across the page.
@@ -61,7 +73,7 @@ const Computers = ({ isMobile, scrollProgress, ready }) => {
     group.position.x = Math.sin(t * 0.5) * 0.15;
     group.position.y =
       baseY - (1 - settle) * 3 + Math.sin(t * 1.2) * 0.12 + scrollProgress * 1.2;
-    group.scale.setScalar(2 * (0.92 + 0.08 * settle));
+    group.scale.setScalar(baseScale * (0.92 + 0.08 * settle));
   });
 
   return (
@@ -71,13 +83,47 @@ const Computers = ({ isMobile, scrollProgress, ready }) => {
   );
 };
 
+// The Canvas camera prop is only read when the camera is created, so mobile
+// framing is applied imperatively. The two sailboats sit 27 world units apart,
+// while a portrait phone's frame is only ~0.52x the camera distance wide, so
+// holding both plus a centred tower would need ~57 units and shrink the model
+// to half size. Mobile instead sits back at 44 units on a narrower 46deg lens,
+// aimed high so the whole scene drops down the frame: the island base falls
+// out of shot entirely, the clouds settle to the lower edge of the hero text
+// instead of sitting in it, and the tower (world x ~-2.3) stays centred with
+// the near sailboat and rowboat in frame. Desktop uses a matching, more
+// frontal angle (8deg versus 23deg before) at the same distance, aimed at the
+// tower's own axis so the model stays centred on screen, with the left
+// sailboat and rowboat sitting lower-left at 74-82% of the screen height,
+// well below the hero text.
+const CameraRig = ({ isMobile }) => {
+  const camera = useThree((state) => state.camera);
+  const controls = useThree((state) => state.controls);
+
+  useEffect(() => {
+    if (isMobile) {
+      camera.position.set(2, -8, 44);
+      camera.fov = 46;
+      controls?.target.set(-0.2, 2, 0);
+    } else {
+      camera.position.set(3, -8, 38);
+      camera.fov = 60;
+      controls?.target.set(-2.3, 1, 0);
+    }
+    camera.updateProjectionMatrix();
+    controls?.update();
+  }, [camera, controls, isMobile]);
+
+  return null;
+};
+
 const ComputersCanvas = () => {
   const { active } = useProgress();
   const [isMobile, setIsMobile] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
+    const mediaQuery = window.matchMedia("(max-width: 639px)");
     setIsMobile(mediaQuery.matches);
     const handleMediaQueryChange = (event) => setIsMobile(event.matches);
     mediaQuery.addEventListener("change", handleMediaQueryChange);
@@ -121,7 +167,13 @@ const ComputersCanvas = () => {
         className="-z-10"
       >
         <Suspense fallback={null}>
-          <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+          <OrbitControls
+            makeDefault
+            enableZoom={false}
+            enablePan={false}
+            enableRotate={false}
+          />
+          <CameraRig isMobile={isMobile} />
           {/* Dramatic lighting: a single concentrated key so most of the
               model falls naturally into shadow, with colored rim light only */}
           <ambientLight intensity={0.2} />

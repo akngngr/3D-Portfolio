@@ -37,10 +37,6 @@ const PlusIcon = ({ active }) => (
   </svg>
 );
 
-// Collapsed = a slim title bar only, so the image does almost all the work at rest.
-const COLLAPSED_HEIGHT = 56;
-const EXPANDED_HEIGHT = 224;
-
 const ProjectCard = ({
   index,
   name,
@@ -72,88 +68,126 @@ const ProjectCard = ({
       }}
       // Single rounded-2xl element; border lives on this same box, so there's
       // no nested rounded-rect mismatch and no corner artifact.
-      className="relative w-full aspect-[4/3] sm:aspect-[16/12] rounded-2xl overflow-hidden cursor-pointer outline-none
+      className="relative w-full h-full rounded-2xl overflow-hidden cursor-pointer outline-none
                  border border-white/10 hover:border-[#5B8DEF]/60
                  shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] hover:shadow-[0_16px_40px_-12px_rgba(91,141,239,0.35)]
                  transition-[border-color,box-shadow] duration-300
                  focus-visible:ring-2 focus-visible:ring-[#5B8DEF] focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
     >
-      {/* Full-bleed image, fixed crop; never resizes or re-crops between states */}
-      <img
-        src={image}
-        alt={name}
-        loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out"
-        style={{ transform: active ? "scale(1.05)" : "scale(1)" }}
-      />
+      {/* Headline image, fixed crop; never re-crops between states */}
+      <div className="relative aspect-[16/9] lg:aspect-[16/8] overflow-hidden">
+        <img
+          src={image}
+          alt={name}
+          loading="lazy"
+          className={`absolute inset-0 w-full h-full object-cover object-top transition-[transform,filter] duration-500 ease-out ${
+            active ? "blur-[2px]" : "blur-0"
+          }`}
+          style={{ transform: active ? "scale(1.05)" : "scale(1)" }}
+        />
 
-      {/* Faint top scrim only, so action icons stay legible without darkening the whole showcase */}
-      <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
+        {/* Faint top scrim only, so action icons stay legible without darkening the whole showcase */}
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
 
-      {/* Action buttons: always visible and tappable */}
-      <div className="absolute top-0 right-0 flex gap-2 m-3 z-10">
-        {live_link && (
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(live_link, "_blank", "noopener");
-            }}
-            aria-label={`Open live project: ${name}`}
-            className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex justify-center items-center text-white hover:scale-110 hover:bg-black/80 transition-all duration-200"
-          >
-            <ExternalLinkIcon />
-          </button>
-        )}
-        {source_code_link && (
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              window.open(source_code_link, "_blank", "noopener");
-            }}
-            aria-label={`View source code: ${name}`}
-            className="w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm flex justify-center items-center hover:scale-110 hover:bg-black/80 transition-all duration-200"
-          >
-            <img src={github} alt="" className="w-1/2 h-1/2 object-contain" />
-          </button>
-        )}
+        {/* Action buttons: always visible and tappable */}
+        <div className="absolute top-0 right-0 flex gap-2 m-3 z-10">
+          {live_link && (
+            <div className="relative flex items-center justify-center">
+              <motion.span
+                aria-hidden="true"
+                animate={
+                  active ? { opacity: 0.3, scale: 1 } : { opacity: 0, scale: 0.94 }
+                }
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute -inset-1 rounded-full bg-white/30 blur-md pointer-events-none"
+              />
+              <motion.button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(live_link, "_blank", "noopener");
+                }}
+                aria-label={`Open live project: ${name}`}
+                className="relative w-9 h-9 rounded-full border border-white/10 bg-black/80 backdrop-blur-sm flex justify-center items-center text-white hover:border-[#4ade80]/70 hover:bg-black/90 transition-colors duration-300 ease-out"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <ExternalLinkIcon />
+              </motion.button>
+            </div>
+          )}
+          {source_code_link && (
+            <div className="relative flex items-center justify-center">
+              <motion.span
+                aria-hidden="true"
+                animate={
+                  active ? { opacity: 0.3, scale: 1 } : { opacity: 0, scale: 0.94 }
+                }
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute -inset-1 rounded-full bg-white/30 blur-md pointer-events-none"
+              />
+              <motion.button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(source_code_link, "_blank", "noopener");
+                }}
+                aria-label={`View source code: ${name}`}
+                className="relative w-9 h-9 rounded-full border border-white/10 bg-black/80 backdrop-blur-sm flex justify-center items-center hover:border-[#4ade80]/70 hover:bg-black/90 transition-colors duration-300 ease-out"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <img src={github} alt="" className="w-1/2 h-1/2 object-contain" />
+              </motion.button>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Bottom panel: fully opaque solid color, so legibility never depends on
-          the image's brightness (fixes the "blur disappears on dark images" issue) */}
+      {/* Slim title bar with a reserved second line, so every card is exactly
+          the same height whatever the title length. */}
+      <div className="bg-[#0b0f17] border-t border-white/10 px-5 pt-3 pb-4 flex items-center justify-between gap-3">
+        <h3 className="text-white font-bold text-[16px] sm:text-[18px] leading-snug line-clamp-2 min-h-[2.75em]">
+          {name}
+        </h3>
+        <span className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/70 shrink-0">
+          <PlusIcon active={active} />
+        </span>
+      </div>
+
+      {/* Detail panel overlays the card instead of expanding it, so hovering
+          never changes a card's height or moves any other card. */}
       <motion.div
-        animate={{ height: active ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT }}
-        transition={{ type: "spring", stiffness: 260, damping: 30 }}
-        className="absolute bottom-0 left-0 right-0 bg-[#0b0f17] border-t border-white/10 px-5 pt-3 pb-4 flex flex-col overflow-hidden"
+        initial={false}
+        animate={{ y: active ? "0%" : "100%", opacity: active ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className={`absolute inset-x-0 bottom-0 z-20 max-h-full overflow-y-auto bg-[#0b0f17]/95 backdrop-blur-sm border-t border-white/10 px-5 pt-3 pb-4 flex flex-col ${
+          active ? "pointer-events-auto" : "pointer-events-none"
+        }`}
       >
-        <div className="flex items-center justify-between gap-3 shrink-0">
-          <h3 className="text-white font-bold text-[19px] sm:text-[20px] leading-tight truncate">
+        {/* Title stays carried at the top of the panel, above the description */}
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-white font-bold text-[16px] sm:text-[18px] leading-snug line-clamp-2">
             {name}
           </h3>
           <span className="w-6 h-6 rounded-full border border-white/25 flex items-center justify-center text-white/70 shrink-0">
             <PlusIcon active={active} />
           </span>
         </div>
-
-        <div
-          className={`transition-opacity duration-300 ${
-            active ? "opacity-100 delay-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <p className="mt-2.5 text-secondary text-[16px] leading-[22px] line-clamp-6">
-            {description}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
-            {tags.map((tag) => (
-              <span
-                key={`${name}-${tag.name}`}
-                className={`text-[13px] ${tag.color}`}
-              >
-                #{tag.name}
-              </span>
-            ))}
-          </div>
+        <p className="pt-3 text-secondary text-[13px] leading-[19px] sm:text-[15px] sm:leading-[22px]">
+          {description}
+        </p>
+        <div className="pt-3 flex flex-wrap gap-x-3 gap-y-1.5">
+          {tags.map((tag) => (
+            <span
+              key={`${name}-${tag.name}`}
+              className={`text-[12px] sm:text-[13px] ${tag.color}`}
+            >
+              #{tag.name}
+            </span>
+          ))}
         </div>
       </motion.div>
     </motion.div>
@@ -179,6 +213,9 @@ const Works = () => {
         </motion.p>
       </div>
 
+      {/* Fixed-height cards: the title bar always reserves two lines, so every
+          card is the same size. The detail panel overlays the lower part of
+          the card on hover, so no card grows and nothing on screen moves. */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />

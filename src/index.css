@@ -21,6 +21,39 @@ body {
   overflow-x: clip;
 }
 
+/* Aurora pool backdrop in the About section: wide, side-to-side pools on
+   desktop; on mobile the pools stack vertically to fill the tall column. */
+.about-aurora {
+  mask-image: radial-gradient(
+    90% 60% at 50% 50%,
+    #000 35%,
+    rgba(0, 0, 0, 0.6) 70%,
+    transparent 88%
+  );
+  -webkit-mask-image: radial-gradient(
+    90% 60% at 50% 50%,
+    #000 35%,
+    rgba(0, 0, 0, 0.6) 70%,
+    transparent 88%
+  );
+}
+@media (max-width: 639px) {
+  .about-aurora {
+    mask-image: radial-gradient(
+      120% 95% at 50% 50%,
+      #000 45%,
+      rgba(0, 0, 0, 0.6) 75%,
+      transparent 95%
+    );
+    -webkit-mask-image: radial-gradient(
+      120% 95% at 50% 50%,
+      #000 45%,
+      rgba(0, 0, 0, 0.6) 75%,
+      transparent 95%
+    );
+  }
+}
+
 /* Aurora Border Effect */
 @layer utilities {
 /* Act as a border: static, no spin */
@@ -54,7 +87,27 @@ body {
 
 }
 
+/* Skill chips: a soft logo-green light sweeps across the whole chip grid when
+   the card is hovered, instead of a flat hover tint. */
+@keyframes chip-sweep {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
 /* Timeline polish */
+@media (max-width: 1169px) and (min-width: 0px) {
+  /* tighter spacing so one experience card fits the viewport on mobile */
+  .vertical-timeline-element {
+    margin: 1.5em 0;
+  }
+  .vertical-timeline-element-content {
+    padding: 0.9em;
+  }
+}
 .vertical-timeline::before {
   /* subtly glowing green spine whose bright spot sweeps downward with scroll
      (position driven by --spine-shine on the wrapper) */
@@ -101,61 +154,7 @@ body {
 /* opaque inner body, inset 2px so the conic ring shows as a border. Fully
    opaque so the rotating gradient can't bleed through the card interior. */
 .exp-body {
-  @apply relative m-[2px] bg-[#0d1a11] rounded-[calc(1.5rem-2px)] px-6 py-7;
-}
-
-/* scroll-to-top button: soft, cloudy diffused glow */
-.caret-ring {
-  @apply relative rounded-full;
-  background: transparent;
-  animation: caret-breathe 4s ease-in-out infinite;
-}
-.caret-ring::after {
-  content: "";
-  @apply absolute -inset-5 rounded-full;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(74, 222, 128, 0.2),
-    rgba(45, 212, 191, 0.08) 55%,
-    transparent 85%
-  );
-  filter: blur(20px);
-  pointer-events: none;
-  animation: caret-glow-breathe 4s ease-in-out infinite;
-  transition: opacity 1s ease;
-}
-@keyframes caret-glow-breathe {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.25);
-  }
-}
-.caret-ring:hover::after {
-  opacity: 1;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(134, 239, 172, 0.32),
-    rgba(74, 222, 128, 0.14) 55%,
-    transparent 85%
-  );
-}
-/* no disc, just the caret sitting inside the glow */
-.caret-body {
-  @apply relative rounded-full;
-}
-@keyframes caret-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.06);
-  }
+  @apply relative m-[2px] bg-[#0d1a11] rounded-[calc(1.5rem-2px)] px-4 py-5 sm:px-6 sm:py-7;
 }
 
 /* date chip */
@@ -210,16 +209,6 @@ body {
     #434343,
     #000000
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.green-gradient {
-  background: #087e00;
-  background: linear-gradient(-90deg, #087e00 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(
-    -90deg,
-    #087e00 0%,
-    rgba(60, 51, 80, 0) 100%
-  );
 }
 
 .green-pink-gradient {

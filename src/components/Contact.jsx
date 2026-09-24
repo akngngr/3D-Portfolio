@@ -116,7 +116,7 @@ const Contact = () => {
   };
 
   const inputClasses =
-    "w-full bg-white/[0.04] py-4 px-6 placeholder:text-white/30 text-white rounded-xl outline-none border border-white/10 focus:border-[#22c55e]/60 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(34,197,94,0.18)] focus:scale-[1.01] ease-out duration-300";
+    "w-full bg-white/[0.04] py-3.5 px-5 sm:py-4 sm:px-6 placeholder:text-white/30 text-white text-[14px] rounded-xl outline-none border border-white/10 focus:border-[#22c55e]/60 focus:bg-white/[0.06] focus:shadow-[0_0_24px_rgba(34,197,94,0.18)] focus:scale-[1.01] ease-out duration-300";
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -139,7 +139,7 @@ const Contact = () => {
               <div className="text-center">
                 <p className={styles.sectionSubText}>Get in touch</p>
                 <h3 className={styles.sectionHeadText}>Contact.</h3>
-                <p className="mt-3 text-[15px] text-white/60 leading-relaxed">
+                <p className="mt-3 text-[13px] sm:text-[15px] text-white/60 leading-relaxed">
                   Have a project, a role, or just a question? My inbox is always
                   open. I'll get back to you as soon as I can.
                 </p>
@@ -152,7 +152,7 @@ const Contact = () => {
               >
                 <div className="grid gap-6 sm:grid-cols-2">
                   <label className="flex flex-col">
-                    <span className="text-white/90 font-medium mb-2.5 text-[14px]">
+                    <span className="text-white/90 font-medium mb-2.5 text-[13px]">
                       Your Name
                     </span>
                     <input
@@ -165,7 +165,7 @@ const Contact = () => {
                     />
                   </label>
                   <label className="flex flex-col">
-                    <span className="text-white/90 font-medium mb-2.5 text-[14px]">
+                    <span className="text-white/90 font-medium mb-2.5 text-[13px]">
                       Your Email
                     </span>
                     <input
@@ -179,7 +179,7 @@ const Contact = () => {
                   </label>
                 </div>
                 <label className="flex flex-col">
-                  <span className="text-white/90 font-medium mb-2.5 text-[14px]">
+                  <span className="text-white/90 font-medium mb-2.5 text-[13px]">
                     Your Message
                   </span>
                   <textarea
@@ -193,17 +193,20 @@ const Contact = () => {
                 </label>
                 <button
                   type="submit"
-                  className="relative overflow-hidden group w-full bg-[#22c55e] py-4 outline-none text-[#02010A] font-bold rounded-xl shadow-[0_0_28px_rgba(34,197,94,0.4)] hover:bg-[#4ade80] hover:scale-[1.02] ease-out duration-300 focus:scale-[1.02] active:scale-100 disabled:opacity-60 disabled:pointer-events-none"
+                  className="relative overflow-hidden group w-full bg-[#22c55e] py-3.5 sm:py-4 outline-none text-[#02010A] text-[15px] font-bold rounded-xl shadow-[0_0_28px_rgba(34,197,94,0.4)] hover:bg-[#4ade80] hover:scale-[1.02] ease-out duration-300 focus:scale-[1.02] active:scale-100 disabled:opacity-60 disabled:pointer-events-none"
                   disabled={loading}
                 >
                   {loading ? "Sending..." : "Send Message"}
                   <motion.div
-                    animate={{ x: ["-180%", "220%"] }}
+                    animate={{ x: ["-180%", "220%"], opacity: [0, 1, 1, 0] }}
                     transition={{
-                      duration: 3,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                      repeatDelay: 2,
+                      x: { duration: 4.5, ease: "linear", repeat: Infinity },
+                      opacity: {
+                        duration: 4.5,
+                        times: [0, 0.4, 0.68, 1],
+                        ease: "linear",
+                        repeat: Infinity,
+                      },
                     }}
                     className="absolute inset-y-0 left-0 w-1/2 pointer-events-none"
                   >

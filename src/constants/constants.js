@@ -33,6 +33,10 @@ import {
 
 export const navLinks = [
   {
+    id: "top",
+    title: "Home",
+  },
+  {
     id: "about",
     title: "About",
   },
@@ -58,7 +62,7 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Support & AI Systems Engineering",
+    title: "Frontend & Interface Engineering",
     description: "Building clean, production React/TypeScript interfaces, component architecture, API integration, and UI shipped from dev to production for a 7M-user platform.",
     skills: ["React", "TypeScript", "Next.js", "JSX", "REST APIs", "Git"]
   },
@@ -68,9 +72,9 @@ const services = [
     skills: ["Azure OpenAI", "RAG", "Vector Search", "Python", "Claude Code", "Codex"]
   },
   {
-    title: "Full-Stack & Systems",
-    description: "Debugging and shipping across the API boundary when a feature needs it, C#/.NET services, SQL, and diagnostic tooling used across teams.",
-    skills: ["C# / .NET", "SQL", "KQL", "Node.js", "Azure DevOps"]
+    title: "Support & Systems Engineering",
+    description: "Owning production support end to end: debugging live incidents across the API boundary, shipping C#/.NET services and SQL changes, and building the diagnostic tooling other teams run.",
+    skills: ["C# / .NET", "SQL", "KQL", "Node.js", "Azure DevOps", "Azure Monitor"]
   },
 ];
 
