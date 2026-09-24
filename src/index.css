@@ -9,31 +9,168 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
-/* Sonar Effect */
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Aurora Border Effect */
 @layer utilities {
-/* Act as a border */
+/* Act as a border: static, no spin */
   .card-wrapper {
-    @apply relative bg-gradient-to-b from-slate-700 to-slate-800 rounded-2xl overflow-hidden;
+    @apply relative bg-[#1b2532] rounded-2xl overflow-hidden;
   }
-  /* Gradient */
+/* Gradient ring: a soft green/blue glow at the top edge that fades around
+   the card. Quiet at rest, brightens on hover. */
   .card-wrapper::before {
     background: conic-gradient(
-      rgba(244, 114, 82, 0.6) 0deg,
-      rgba(192, 132, 252, 0.6) 0deg,
-      transparent 80deg
+      from var(--ring-angle, 200deg) at 50% 50%,
+      rgba(34, 197, 94, 0) 0deg,
+      rgba(34, 197, 94, 0.4) 40deg,
+      rgba(255, 255, 255, 0.25) 80deg,
+      rgba(255, 255, 255, 0) 140deg,
+      rgba(255, 255, 255, 0) 220deg,
+      rgba(34, 197, 94, 0.28) 260deg,
+      rgba(34, 197, 94, 0) 320deg
     );
 
-    @apply absolute h-[150%] w-[150%] left-[-25%] top-[-25%] content-[''] animate-border-spin;
+    @apply absolute h-[150%] w-[150%] left-[-25%] top-[-25%] content-[''];
+    transition: filter 0.6s ease, opacity 0.6s ease;
+  }
+  .card-wrapper:hover::before {
+    filter: brightness(1.9);
   }
   /* Body */
   .card-content {
-    @apply absolute w-[calc(100%-4px)] h-[calc(100%-4px)] top-[2px] left-[2px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-2xl;
+    @apply absolute w-[calc(100%-4px)] h-[calc(100%-4px)] top-[2px] left-[2px] bg-[#0d1117] rounded-2xl;
   }
 
+}
+
+/* Timeline polish */
+.vertical-timeline::before {
+  /* subtly glowing green spine whose bright spot sweeps downward with scroll
+     (position driven by --spine-shine on the wrapper) */
+  background: linear-gradient(
+    to bottom,
+    rgba(34, 197, 94, 0) 0%,
+    rgba(34, 197, 94, 0.35) 10%,
+    rgba(34, 197, 94, 0.35) var(--spine-shine, -10%),
+    rgba(127, 255, 183, 0.9) calc(var(--spine-shine, -10%) + 4%),
+    rgba(34, 197, 94, 0.35) calc(var(--spine-shine, -10%) + 8%),
+    rgba(34, 197, 94, 0.35) 90%,
+    rgba(34, 197, 94, 0) 100%
+  ) !important;
+  width: 2px !important;
+}
+
+.vertical-timeline-element .vertical-timeline-element-content {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: border-color, box-shadow, transform;
+}
+
+/* experience card ring: same conic treatment as About cards, angle bound
+   to --ring-angle which rotates opposite the scroll direction */
+.exp-ring {
+  @apply relative overflow-hidden rounded-3xl;
+}
+.exp-ring::before {
+  background: conic-gradient(
+    from var(--ring-angle, 200deg) at 50% 50%,
+    rgba(34, 197, 94, 0) 0deg,
+    rgba(34, 197, 94, 0.4) 40deg,
+    rgba(255, 255, 255, 0.25) 80deg,
+    rgba(255, 255, 255, 0) 140deg,
+    rgba(255, 255, 255, 0) 220deg,
+    rgba(34, 197, 94, 0.28) 260deg,
+    rgba(34, 197, 94, 0) 320deg
+  );
+  @apply absolute h-[150%] w-[150%] left-[-25%] top-[-25%] content-[''];
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+.exp-ring:hover::before {
+  filter: brightness(1.9);
+}
+/* opaque inner body, inset 2px so the conic ring shows as a border. Fully
+   opaque so the rotating gradient can't bleed through the card interior. */
+.exp-body {
+  @apply relative m-[2px] bg-[#0d1a11] rounded-[calc(1.5rem-2px)] px-6 py-7;
+}
+
+/* scroll-to-top button: soft, cloudy diffused glow */
+.caret-ring {
+  @apply relative rounded-full;
+  background: transparent;
+  animation: caret-breathe 4s ease-in-out infinite;
+}
+.caret-ring::after {
+  content: "";
+  @apply absolute -inset-5 rounded-full;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(74, 222, 128, 0.2),
+    rgba(45, 212, 191, 0.08) 55%,
+    transparent 85%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+  animation: caret-glow-breathe 4s ease-in-out infinite;
+  transition: opacity 1s ease;
+}
+@keyframes caret-glow-breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+.caret-ring:hover::after {
+  opacity: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(134, 239, 172, 0.32),
+    rgba(74, 222, 128, 0.14) 55%,
+    transparent 85%
+  );
+}
+/* no disc, just the caret sitting inside the glow */
+.caret-body {
+  @apply relative rounded-full;
+}
+@keyframes caret-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* date chip */
+.vertical-timeline-element .exp-date {
+  color: #4ade80 !important;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  opacity: 1 !important;
+}
+
+/* icon glow matches ring */
+.vertical-timeline-element-icon {
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12),
+    0 0 24px rgba(34, 197, 94, 0.28) !important;
 }
 
 /* Text shadow utilities */

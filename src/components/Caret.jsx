@@ -1,39 +1,49 @@
-import React from 'react'
-import CaretIcon from '/caretsvg.svg'
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import CaretIcon from "/caretsvg.svg";
 
 const Caret = () => {
-  const handleScroll = () => {
-    var rootElement = document.documentElement;
-    var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
-    if (rootElement.scrollTop / scrollTotal > 0.8) {
-      var scrollBtn = document.querySelector("#scrollToTop");
-    }
-  };
+  const btnRef = useRef(null);
+  // ring sweeps opposite to scroll, matching the section cards
+  const { scrollYProgress } = useScroll({
+    target: btnRef,
+    offset: ["start end", "end start"],
+  });
+  const ringAngle = useTransform(scrollYProgress, [0, 1], ["150deg", "-150deg"]);
 
   return (
-    <div
+    <motion.div
+      ref={btnRef}
       id="scrollToTop"
-      className="md:block absolute bottom-3 right-3 rounded-full bg-green-700 sm:hidden cursor-pointer"
+      className="md:block group absolute bottom-16 right-16 cursor-pointer"
+      style={{
+        "--ring-angle": ringAngle,
+        zIndex: 20
+      }}
     >
-      <a
-        href="#top"
-        aria-label="Scroll to top"
-        onClick={(e) => {
-          e.preventDefault();
-          handleScroll();
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <img
-          src={CaretIcon}
-          width="28"
-          height="28"
-          className="hover:-translate-y-1 ease-in-out duration-200"
-          alt="Scroll to top"
-        />
-      </a>
-    </div>
+<div className="caret-ring rounded-full">
+          <a
+            href="#top"
+            aria-label="Scroll to top"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="block"
+          >
+            <div className="caret-body h-[46px] w-[46px] flex items-center justify-center">
+              <img
+                src={CaretIcon}
+                width="22"
+                height="22"
+                className="hover:-translate-y-1.5 ease-out duration-500 opacity-60 group-hover:opacity-90 transition-all"
+                alt="Scroll to top"
+              />
+            </div>
+          </a>
+        </div>
+    </motion.div>
   );
 };
 
-export default Caret
+export default Caret;

@@ -58,7 +58,7 @@ const ProjectCard = ({
       role="button"
       tabIndex={0}
       aria-expanded={active}
-      aria-label={`${name} — show details`}
+      aria-label={`${name}, show details`}
       onClick={() => setActive((v) => !v)}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
@@ -70,7 +70,7 @@ const ProjectCard = ({
           setActive((v) => !v);
         }
       }}
-      // Single rounded-2xl element — border lives on this same box, so there's
+      // Single rounded-2xl element; border lives on this same box, so there's
       // no nested rounded-rect mismatch and no corner artifact.
       className="relative w-full aspect-[4/3] sm:aspect-[16/12] rounded-2xl overflow-hidden cursor-pointer outline-none
                  border border-white/10 hover:border-[#5B8DEF]/60
@@ -78,7 +78,7 @@ const ProjectCard = ({
                  transition-[border-color,box-shadow] duration-300
                  focus-visible:ring-2 focus-visible:ring-[#5B8DEF] focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
     >
-      {/* Full-bleed image — fixed crop, never resizes or re-crops between states */}
+      {/* Full-bleed image, fixed crop; never resizes or re-crops between states */}
       <img
         src={image}
         alt={name}
@@ -90,7 +90,7 @@ const ProjectCard = ({
       {/* Faint top scrim only, so action icons stay legible without darkening the whole showcase */}
       <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/50 to-transparent pointer-events-none" />
 
-      {/* Action buttons — always visible and tappable */}
+      {/* Action buttons: always visible and tappable */}
       <div className="absolute top-0 right-0 flex gap-2 m-3 z-10">
         {live_link && (
           <button
@@ -120,7 +120,7 @@ const ProjectCard = ({
         )}
       </div>
 
-      {/* Bottom panel — fully opaque solid color, so legibility never depends on
+      {/* Bottom panel: fully opaque solid color, so legibility never depends on
           the image's brightness (fixes the "blur disappears on dark images" issue) */}
       <motion.div
         animate={{ height: active ? EXPANDED_HEIGHT : COLLAPSED_HEIGHT }}
@@ -173,7 +173,7 @@ const Works = () => {
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Selected work — from AI-powered dashboards to a 3D model inspector,
+          Selected work, from AI-powered dashboards to a 3D model inspector,
           each one shipped end-to-end and live behind the links. More of my
           side experiments live on GitHub.
         </motion.p>
