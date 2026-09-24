@@ -1,15 +1,19 @@
-import React, { Suspense, useEffect, useRef, useState, useMemo } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Preload } from "@react-three/drei";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
 const Computers = ({ isMobile, scrollProgress }) => {
 
   /*
   This work is based on "Maiden's Tower" (https://sketchfab.com/3d-models/maidens-tower-37f24564b1c446e7b2e99d5ae635ceda) by Erbay Çelik (https://sketchfab.com/erbaycelik) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
   */
-  const computer = useLoader(GLTFLoader, "./hacker_room/scene.glb");
+  const computer = useLoader(GLTFLoader, "./hacker_room/scene.glb", (loader) => {
+    const draco = new DRACOLoader().setDecoderPath("/draco/");
+    loader.setDRACOLoader(draco);
+  });
   const modelRef = useRef();
 
   useEffect(() => {
@@ -33,14 +37,14 @@ const Computers = ({ isMobile, scrollProgress }) => {
     }
   });
 
-  const scale = useMemo(() => (isMobile ? 2 : 2), [isMobile]);
+  const scale = 2;
 
   return (
     <mesh ref={modelRef}>
       {computer?.scene && (
         <primitive
           object={computer.scene}
-          scale={[scale, scale, scale]}
+          scale={scale}
           position={isMobile ? [0, -10, 0] : [0, -15, 0]}
         />
       )}
@@ -75,14 +79,15 @@ const ComputersCanvas = () => {
     <Canvas
       shadows
       camera={{
-        position: isMobile ? [15, -8, 35] : [15, -8, 35],
+        position: [15, -8, 35],
         fov: 60,
       }}
       gl={{
         preserveDrawingBuffer: true,
-        powerPreference: "high-performance",
+        powerPreference: "low-power",
         antialias: true,
       }}
+      dpr={[1, 1.5]}
       className="-z-10"
     >
       <Suspense fallback={null}>
@@ -90,7 +95,6 @@ const ComputersCanvas = () => {
         {/* Balanced Lighting */}
         <ambientLight intensity={0.05} />
         <hemisphereLight intensity={0.25} groundColor="#333" />
-        <pointLight intensity={0} position={[5, 10, 5]} />
         <directionalLight
           intensity={1.5}
           position={[5, 10, 5]}

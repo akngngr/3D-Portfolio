@@ -172,7 +172,11 @@ const Works = () => {
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        ></motion.p>
+        >
+          Selected work — from AI-powered dashboards to a 3D model inspector,
+          each one shipped end-to-end and live behind the links. More of my
+          side experiments live on GitHub.
+        </motion.p>
       </div>
 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">

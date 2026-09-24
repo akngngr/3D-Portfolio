@@ -1,14 +1,8 @@
-import logo from "./logo.svg";
 import alogo from "./alogo.svg";
-import backend from "./backend.png";
-import creator from "./creator.png";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import code from "./code.png";
-import atom from "./atom.png";
-import gamedev from "./gamedev.png";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
@@ -26,23 +20,21 @@ import three from "./tech/three.png";
 import azure from "./tech/azure.png";
 import mui from "./tech/mui.png";
 import vite from "./tech/vite.png";
+import python from "./tech/python.png";
+import dotnet from "./tech/dotnet.png";
 
 import freelance from "./company/freelance.png";
 import ak from "./company/ak.png";
 
-import crypto from "./project/crypto.png";
-import dalle from "./project/dalle.png";
-import booking from "./project/booking.png";
-import gym from "./project/gym.png";
-import pinterest from "./project/pinterest.png";
-import voxal from "./project/voxal.png";
-import cad from "./project/cad.png";
+import crypto from "./project/crypto.webp";
+import dalle from "./project/dalle.webp";
+import booking from "./project/booking.webp";
+import gym from "./project/gym.webp";
+import voxal from "./project/voxal.webp";
+import cad from "./project/cad.webp";
 
 export {
-  logo,
   alogo,
-  backend,
-  creator,
   github,
   linkedin,
   menu,
@@ -62,17 +54,15 @@ export {
   azure,
   mui,
   vite,
+  python,
+  dotnet,
   freelance,
   ak,
-  code,
-  atom,
-  gamedev,
   crypto,
   dalle,
   booking,
   gym,
   three,
-  pinterest,
   voxal,
   cad
 };

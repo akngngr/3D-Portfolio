@@ -1,12 +1,32 @@
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
-import Desk from "./canvas/Scene";
+
+const ComputersCanvas = lazy(() => import("./canvas/Computers"));
 
 const Hero = () => {
+  const sectionRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px", threshold: 0 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section ref={sectionRef} className="relative w-full h-screen mx-auto">
       <div
         className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
       >
@@ -28,8 +48,11 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
-      {/* <Desk /> */}
+      {isReady && (
+        <Suspense fallback={null}>
+          <ComputersCanvas />
+        </Suspense>
+      )}
 
       {/* Scrolling helper button */}
       <div className="absolute xs:bottom-25 bottom-8 w-full flex justify-center items-center">
