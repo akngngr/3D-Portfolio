@@ -217,9 +217,9 @@ const experiences = [
 
 const projects = [
   {
-    name: "Enterprise Knowledge & Support Copilot",
+    name: "Enterprise Knowledge Copilot",
     description:
-      "Enterprise-grade RAG copilot that answers questions grounded in company documents: FastAPI backend, Streamlit chat UI, and pgvector embeddings served from production hosting. A dual-engine design runs Google Gemini embeddings/LLMs in the cloud with automated fallback to local Ollama models when the cloud path is slow or unreachable, so the system keeps answering through outages. PDFs are ingested, chunked, and vectorized for similarity search, and every answer returns its source chunks for verifiability.",
+      "Multi-tenant RAG copilot: answers grounded in uploaded PDFs, with the exact source chunks returned. Google OIDC sign-in, and every document, chunk and query scoped to the signed-in account, so one user's uploads are invisible to another, enforced in the API and covered by tests rather than only in the UI. Gemini handles embeddings and generation, with retry and a model-fallback chain so a busy upstream cannot take the service down, plus a local Ollama path for development.",
     tags: [
       {
         name: "rag",
@@ -234,16 +234,24 @@ const projects = [
         color: "orange-text-gradient",
       },
       {
+        name: "oidc",
+        color: "pink-text-gradient",
+      },
+      {
         name: "gemini",
         color: "pink-text-gradient",
       },
       {
-        name: "streamlit",
+        name: "docker",
+        color: "green-text-gradient",
+      },
+      {
+        name: "github-actions",
         color: "blue-text-gradient",
       },
       {
-        name: "docker",
-        color: "green-text-gradient",
+        name: "streamlit",
+        color: "blue-text-gradient",
       },
     ],
     image: enterpriseCopilot,
