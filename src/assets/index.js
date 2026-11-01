@@ -34,6 +34,7 @@ import gym from "./project/gym.webp";
 import voxal from "./project/voxal.webp";
 import cad from "./project/cad.webp";
 import enterpriseCopilot from "./project/enterprise-copilot.webp";
+import triageAgent from "./project/triage-agent.webp";
 
 export {
   alogo,
@@ -68,5 +69,6 @@ export {
   three,
   voxal,
   cad,
-  enterpriseCopilot
+  enterpriseCopilot,
+  triageAgent
 };

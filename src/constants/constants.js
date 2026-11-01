@@ -28,7 +28,8 @@ import {
   linkedin,
   voxal,
   cad,
-  enterpriseCopilot
+  enterpriseCopilot,
+  triageAgent
 } from "../assets";
 
 export const navLinks = [
@@ -43,6 +44,10 @@ export const navLinks = [
   {
     id: "work",
     title: "Work",
+  },
+  {
+    id: "projects",
+    title: "Projects",
   },
   {
     id: "contact",
@@ -216,6 +221,36 @@ const experiences = [
 
 
 const projects = [
+  {
+    name: "Ticket Triage Agent",
+    description:
+      "Generative AI agent where a human decision gates every write action: the agent searches a knowledge base of past issue-resolution pairs for incoming tickets, proposes a label, and the label only gets applied after a human approves it in the chat UI. Approval policy lives on the tool definition itself, the UI renders the full tool lifecycle (approval requested, responded, applied, denied), and every agent step is traced in Vercel Runtime Logs.",
+    tags: [
+      {
+        name: "ai-sdk",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "nextjs",
+        color: "green-text-gradient",
+      },
+      {
+        name: "human-in-the-loop",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "zod",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "vercel",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: triageAgent,
+    source_code_link: "https://github.com/akngngr/gateway-app",
+    live_link: "https://gateway-app-demo.vercel.app/",
+  },
   {
     name: "Enterprise Knowledge Copilot",
     description:
