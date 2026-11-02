@@ -242,9 +242,9 @@ const Navbar = () => {
                   hidden: {},
                   show: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
                 }}
-                className="flex items-center justify-between py-3"
+                className="flex items-center justify-between gap-3 py-3"
               >
-                <div className="flex items-center gap-4 sm:gap-6">
+                <div className="no-scrollbar flex items-center gap-3 overflow-x-auto whitespace-nowrap sm:gap-6">
                   {navLinks
                     .filter((l) => l.title)
                     .map((link) => (
@@ -270,7 +270,7 @@ const Navbar = () => {
                       </motion.a>
                     ))}
                 </div>
-                <motion.div variants={itemVariant} className="flex items-center gap-2.5">
+                <motion.div variants={itemVariant} className="flex-shrink-0 flex items-center gap-2.5">
                   {navLinks
                     .filter((l) => !l.title)
                     .map((link) => (

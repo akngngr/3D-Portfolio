@@ -21,6 +21,15 @@ body {
   overflow-x: clip;
 }
 
+/* Mobile nav link row scrolls side to side without a scrollbar strip */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Aurora pool backdrop in the About section: wide, side-to-side pools on
    desktop; on mobile the pools stack vertically to fill the tall column. */
 .about-aurora {
